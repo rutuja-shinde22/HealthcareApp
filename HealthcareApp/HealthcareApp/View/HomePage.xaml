@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="HealthcareApp.View.HomePage"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Frame" x:Key="FrameStyle">
@@ -23,14 +24,14 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Profile" Priority="0" Order="Secondary" Clicked="ToolbarItemProfile_Clicked"/>
         <ToolbarItem Text="Change Password" Priority="0" Order="Secondary" Clicked="ToolbarItemChangePassword_Clicked"/>
         <ToolbarItem Text="Logout" Priority="0" Order="Secondary" Clicked="ToolbarItemLogout_Clicked"/>
-  </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"/>
@@ -69,15 +70,28 @@
                 </Image.GestureRecognizers>
             </custom1:CircleImage>
 
-            <Label Grid.Row="2"
+            <StackLayout
+                   Grid.Row="2"
                    Grid.Column="0"
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
+                <Label 
                    Text="Welcome"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
-            
+                <Label 
+                  x:Name="patientName"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            </StackLayout>
+
+
             <Grid Grid.Row="3"
                    Grid.Column="0"
                   Margin="25,10">
@@ -152,7 +166,7 @@
                     <StackLayout
                         HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Image Source="doc"
+                        <Image Source="prescription"
                                  Style="{StaticResource Imagestyle}"/>
                         <Label Text="Health Tips"
                               Style="{StaticResource LabelStyle}"/>

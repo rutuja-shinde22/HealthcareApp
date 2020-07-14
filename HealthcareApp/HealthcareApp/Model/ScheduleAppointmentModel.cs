@@ -10,5 +10,6 @@ namespace HealthcareApp.Model
         public string PractisingFrom { get; set; }
         public string DoctorId { get; set; }
         public string Photo { get; set; }
+        public string Charges { get; set; }
     }
 }

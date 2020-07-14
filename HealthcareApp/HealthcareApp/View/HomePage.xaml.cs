@@ -25,6 +25,7 @@ namespace HealthcareApp.View
     {
         public string _clientId;
         public string _branchId;
+        public string _patientName;
 
         public PhotoSize PhotoSize { get; private set; }
         public string profileImage { get; private set; }
@@ -39,18 +40,19 @@ namespace HealthcareApp.View
             {
                 _clientId = Application.Current.Properties["ClientId"].ToString();
                 _branchId = Application.Current.Properties["BranchId"].ToString();
+                _patientName = Application.Current.Properties["PatientName"].ToString();
 
             }
-
+            patientName.Text = _patientName;
             DisplayUserImage();
 
         }
         protected override async void OnAppearing()
         {
 
-           
+
             base.OnAppearing();
-           
+
         }
         public async void DisplayUserImage()
         {
@@ -223,6 +225,6 @@ namespace HealthcareApp.View
             Navigation.PushAsync(new ChangePasswordPage());
         }
 
-       
+
     }
 }
