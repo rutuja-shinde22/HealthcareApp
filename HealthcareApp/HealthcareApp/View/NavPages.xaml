@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.NavPages"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout Margin="5,10,5,5"
+                     BackgroundColor="White">
+            <Image Source="man"
+                           HorizontalOptions="StartAndExpand"
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           Margin="10,0,0,0"/>
+            <Label Text="Patient Connect"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           HorizontalOptions="StartAndExpand"
+                           Margin="10,0,0,0"/>
+            <StackLayout Orientation="Horizontal"
+                                      Margin="0,-5,0,-5">
+                <Image Source="doctor"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                <Button Text="Schedule Appointment"
+                              TextColor="Black"
+                           FontAttributes="Bold"
+                                FontSize="12"
+                                Pressed="ScheduleAppointment_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                                      Margin="0,-5,0,-5">
+                <Image Source="prescription"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                <Button Text="View Prescription  "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                                 FontSize="12"
+                                Clicked="ViewPrescription_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                                  Margin="0,-5,0,-5">
+                <Image Source="reports"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                <Button Text="View Report    "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                         FontSize="12"
+                                Clicked="viewReport_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                                  Margin="0,-5,0,-5">
+                <Image Source="healthTips"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                <Button Text="Health Tips    "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                                 FontSize="12"
+                                Clicked="HealthTips_clicked"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    

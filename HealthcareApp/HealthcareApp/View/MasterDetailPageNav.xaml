@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.MasterDetailPageNav"
+                  NavigationPage.HasNavigationBar="False">
+    <MasterDetailPage.Master>
+        <ContentPage Padding="10" BackgroundColor="OldLace" Title="Master">
+            <ContentPage.Content>
+                <StackLayout Margin="5,10,5,10"
+                     BackgroundColor="OldLace">
+                    <Image Source="man"
+                           HorizontalOptions="Center"
+                           HeightRequest="50"
+                           WidthRequest="50"/>
+                    <Label Text="Patient Connect"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           HorizontalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal"
+                                      Margin="0,-5,0,10">
+                        <Image Source="doctor"
+                              HeightRequest="35"
+                               WidthRequest="35"/>
+                        <Button Text="Schedule Appointment"
+                              TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                BackgroundColor="Aquamarine"
+                                BorderRadius="10"
+                                Pressed="SheduleAppointmentButton_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                      Margin="0,-5,0,10">
+                        <Image Source="prescription"
+                               HeightRequest="35"
+                               WidthRequest="35"/>
+                        <Button Text="View Prescription   "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                                 FontSize="12"
+                                BackgroundColor="Aquamarine"
+                                BorderRadius="10"
+                                Clicked="ViewPrescriptionButton_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                  Margin="0,-5,0,10">
+                        <Image Source="reports"
+                              HeightRequest="35"
+                               WidthRequest="35"/>
+                        <Button Text="View Report    "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                         FontSize="12"
+                                 BackgroundColor="Aquamarine"
+                                BorderRadius="10"
+                                Clicked="ViewReportButton_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                  Margin="0,-5,0,10">
+                        <Image Source="healthTips"
+                               HeightRequest="35"
+                               WidthRequest="35"/>
+                        <Button Text="Health Tips    "
+                                TextColor="Black"
+                           FontAttributes="Bold"
+                                 FontSize="12"
+                                BackgroundColor="Aquamarine"
+                                BorderRadius="10"
+                                Clicked="HealthTipsButton_Clicked"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Detail Page"></Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
+

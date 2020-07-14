@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="HealthcareApp.View.HomePage"
+             NavigationPage.HasNavigationBar="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="FrameStyle">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="BackgroundColor" Value="#2E86C1"/>
+            </Style>
+            <Style TargetType="Image" x:Key="Imagestyle">
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="WidthRequest" Value="30"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelStyle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Priority="0" Order="Secondary" Clicked="ToolbarItemProfile_Clicked"/>
+        <ToolbarItem Text="Change Password" Priority="0" Order="Secondary" Clicked="ToolbarItemChangePassword_Clicked"/>
+        <ToolbarItem Text="Logout" Priority="0" Order="Secondary" Clicked="ToolbarItemLogout_Clicked"/>
+  </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <!--<StackLayout Orientation="Horizontal"
+                         Grid.Row="0"
+                         Grid.Column="0" 
+                         BackgroundColor="#2E86C1">
+
+                <Label Text="User Name"
+                       TextColor="White"
+                       FontSize="Medium"
+                       Margin="20"/>
+                <Image Source="man"
+                       HorizontalOptions="EndAndExpand"
+                       WidthRequest="40"
+                       Margin="10,15"
+                       Aspect="Fill"/>
+            </StackLayout>-->
+
+            <custom1:CircleImage Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="10"
+                   HeightRequest="110"
+                   WidthRequest="110"
+                   Aspect="Fill"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   x:Name="userImage">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SelectPictureFromGallery"/>
+                </Image.GestureRecognizers>
+            </custom1:CircleImage>
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Welcome"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            
+            <Grid Grid.Row="3"
+                   Grid.Column="0"
+                  Margin="25,10">
+
+                <Frame Grid.Row="0"
+                       Grid.Column="0"
+                       Style="{StaticResource FrameStyle}">
+                    <StackLayout
+                      HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="app"
+                               Style="{StaticResource Imagestyle}"/>
+                        <Label Text="  Schedule Appointment"
+                              Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ScheduleAppointmentTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+
+                <Frame Style="{StaticResource FrameStyle}"
+                       Grid.Row="0"
+                       Grid.Column="1">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="file"
+                                  Style="{StaticResource Imagestyle}"/>
+                        <Label Text="    My &#10;Appointments"
+                               Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MyAppointmentTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame  Style="{StaticResource FrameStyle}"
+                       Grid.Row="1"
+                       Grid.Column="0">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="file"
+                                  Style="{StaticResource Imagestyle}"/>
+                        <Label Text="    View Prescription"
+                              Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ViewPrescriptionTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame  Style="{StaticResource FrameStyle}"
+                       Grid.Row="1"
+                       Grid.Column="1">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="download"
+                                 Style="{StaticResource Imagestyle}"/>
+                        <Label Text="Download   Report"
+                             Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DownloadReportTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame  Style="{StaticResource FrameStyle}"
+                       Grid.Row="2"
+                       Grid.Column="0">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="doc"
+                                 Style="{StaticResource Imagestyle}"/>
+                        <Label Text="Health Tips"
+                              Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HealthTipsTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.HealthTipsPage"
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Health Tips"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   Margin="10,10,0,0"/>
+            
+            <ListView  x:Name="listView"
+                       HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="20,10,20,10" >
+
+                                <StackLayout BackgroundColor="White">
+                                    <Label Text="{Binding heading}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"/>
+
+                                    <Label Text="{Binding healthTips}" 
+                                       FontAttributes="Italic"
+                                   FontSize="14"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

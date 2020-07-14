@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local11="clr-namespace:HealthcareApp.Renderers"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="HealthcareApp.View.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6.5*"/>
+                <!--<RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>-->
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.20*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                  BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalOptions="Center"
+                       Source="Banner"
+                       Aspect="Fill"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <Label Text=" Don't drink sugar calories" FontSize="14" 
+                           HorizontalOptions="Center"
+                           TextColor="Black"/>
+                    <Label Text="Sugary drinks are among the most fattening items you can put into your body." 
+                                  FontSize="8"
+                                  Margin="0,0,0,-5"/>
+                    <Label Text="This is because your brain doesn't measure calories from liquid sugar the same"
+                           FontSize="8" Margin="0,0,0,-5"/>
+                    <Label Text="way it does for solid food." FontSize="8"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+            <!--<Image Source="Banner"
+                   Aspect="AspectFill"
+                   Grid.Row="0"
+                   Grid.Column="0"/>-->
+
+            <!--<Label Text="Welcome Back :)"
+                   TextColor="Black"
+                   FontSize="22"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+
+            <Label Text=" We Keep Your Medical Data"
+                   TextColor="Black"
+                   FontAttributes="Italic"
+                   HorizontalOptions="Center"
+                   FontSize="15"
+                   Grid.Row="2"
+                   Grid.Column="0"/>-->
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Orientation="Horizontal"
+                         Margin="10,7">
+                <Image Source="user"
+                       HeightRequest="20"
+                       WidthRequest="20"/>
+                <local11:RoundedCornerEntry
+                   Placeholder="User Name"
+                    x:Name="Username"
+                   FontSize="15"
+                    HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="0"
+                         Orientation="Horizontal"
+                         Margin="10,7">
+                <Image Source="password1"
+                       HeightRequest="20"
+                       WidthRequest="20"/>
+                <local11:RoundedCornerEntry 
+                   Placeholder="Password"
+                   x:Name="Password"
+                   IsPassword="True"
+                   FontSize="15"
+                   HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Button Text="Login"
+                    BorderRadius="40"
+                    BorderWidth="2"
+                    TextColor="White"
+                    BackgroundColor="#2E86C1"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Pressed="Login_Button_Pressed"
+                    x:Name="loginButton"
+                     Margin="30,0,10,10"/>
+            <StackLayout
+                Grid.Column="0"
+                Grid.Row="4"
+                Orientation="Horizontal">
+                <Label Text="SignUp"
+                       TextColor="#2E86C1"
+                       Margin="30,-10,0,-5"
+                       FontSize="12"
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SignUpTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Forget Password?"
+                       TextColor="#2E86C1"
+                       HorizontalOptions="EndAndExpand"
+                       Margin="0,-10,25,-5"
+                       FontAttributes="Bold"
+                       FontSize="12">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ForgotPasswordTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

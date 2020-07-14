@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.DoctorDetailPage"
+            xmlns:ia="clr-namespace:IntelliAbb.Xamarin.Controls;assembly=IntelliAbb.Xamarin.Controls"
+             Title="Doctor Detail"
+             
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--<Frame BackgroundColor="#3498DB">-->
+            <StackLayout Orientation="Vertical"
+                             Padding="10">
+                <!--<StackLayout Orientation="Horizontal"
+                             Margin="0,-20,0,0">
+                        <Image x:Name="doctorImage"
+                               Source="dimage"
+                       HeightRequest="100"
+                       WidthRequest="100"/>-->
+                <StackLayout Orientation="Vertical"
+                                     Margin="15,0,0,0">
+                    <Label x:Name="DoctorName"
+                               TextColor="Black"
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                    <Label x:Name="PracticingFrom"
+                                   TextColor="Black"
+                                   FontSize="15"/>
+                    <!--<Label Text="*4.3"
+                               TextColor="White"
+                               FontSize="15"/>-->
+                    <DatePicker Margin="10"
+                                    x:Name="datePicker"
+                                    TextColor="Black"
+                                    DateSelected="DatePicker_DateSelected"/>
+                    <Label Text="Availablity"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               x:Name="availability"
+                                FontSize="15"/>
+                    <!--<Label Text="Timing 10 to 7"
+                               TextColor="White"
+                                FontSize="15"
+                                   Margin="0,0,0,10"/>-->
+                    <!--</StackLayout>-->
+                </StackLayout>
+                <Frame  
+                            HeightRequest="200">
+                    <ScrollView Orientation="Both"
+                                    VerticalScrollBarVisibility="Always"
+                                    HorizontalScrollBarVisibility="Always">
+                        <StackLayout x:Name="MyButtons"/>
+                    </ScrollView>
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Picker x:Name="picker"
+                                 Title="Select Payment Mode"
+                                 TextColor="Black"
+                                FontSize="15"
+                                 FontAttributes="Bold"
+                                 ItemDisplayBinding="{Binding PaymentMode}"
+                                 Margin="20,10"
+                                 HorizontalOptions="FillAndExpand"
+                                 SelectedIndexChanged="SelectedPaymentOptionChanged"/>
+                    <Image Source="downArrow"
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       Margin="-25,0,15,0"/>
+                </StackLayout>
+                <Entry x:Name="PayDetailsEntry"
+                           IsVisible="False"
+                           PlaceholderColor="Black"
+                           TextColor="Black"
+                            Margin="20,-10,10,30"
+                           FontSize="12"/>
+
+                <StackLayout Orientation="Horizontal"
+                             Margin="20,0,0,0">
+                    <!--<Image Source="BoxUncheck"
+                           HeightRequest="25"
+                           WidthRequest="25"
+                       Margin="15,0,0,0"/>-->
+                    <ia:Checkbox x:Name="VedioCunsultationCheckbox"
+                        OutlineColor="#2E86C1"
+                        FillColor="#2E86C1"
+                        CheckColor="White"
+                        Shape="Rectangle"
+                        IsCheckedChanged="VedioCunsultationCheckChanged"/>
+
+                    <Label Text="Do you want to book vedio conferancing"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                       FontSize="13"/>
+                </StackLayout>
+
+            </StackLayout>
+            <!--</Frame>-->
+
+
+            <!--<StackLayout Orientation="Horizontal">
+                <Label Text="Service"
+                       FontSize="18"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       Margin="10,0,0,0"/>-->
+            <Button Text="Book Appointment"
+                        BackgroundColor="#3498DB"
+                        TextColor="White"
+                        FontSize="15"
+                        CornerRadius="15"
+                        Margin="20,10,20,20"
+                        FontAttributes="Bold"
+                        Clicked="BookAppointmentButtonClicked"/>
+            <!--</StackLayout>-->
+
+            <!--<StackLayout Margin="10,-10,0,0">
+                <Label Text="Specially Diagnostic Department"
+                       TextColor="Black"
+                       FontSize="18"/>
+                <Label Text="Protective Mediciences"
+                       TextColor="Black"
+                       FontSize="18"/>
+                <Label Text="Diagnostic Center"
+                       TextColor="Black"
+                       FontSize="18"/>
+                <Label Text="Scar Tretament"
+                       TextColor="Black"
+                       FontSize="18"/>
+                <Label Text=" Acne Pimple Tretament"
+                       TextColor="Black"
+                       FontSize="18"/>
+
+            </StackLayout>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

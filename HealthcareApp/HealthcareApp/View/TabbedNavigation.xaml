@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.TabbedNavigation"
+            xmlns:views="clr-namespace:HealthcareApp.View"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.BarItemColor="#999999"
+            BarBackgroundColor="OldLace"
+             android:TabbedPage.BarSelectedItemColor="Black"
+            NavigationPage.HasNavigationBar="False">
+    <TabbedPage.Children>
+        <NavigationPage Title="Schedule Appointment"  Icon="app">
+            <x:Arguments>
+                <views:ScheduleAppointmentPage/>
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="View Prescription" Icon="file">
+            <x:Arguments>
+                <views:ViewPrescriptionPage/>
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Download Report" Icon="download">
+            <x:Arguments>
+                <views:ViewReportPage/>
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Health Tips" Icon="doc">
+            <x:Arguments>
+                <views:HealthTipsPage/>
+            </x:Arguments>
+        </NavigationPage>
+
+    </TabbedPage.Children>
+    
+</TabbedPage>

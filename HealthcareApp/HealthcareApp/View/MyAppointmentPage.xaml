@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+            xmlns:local="clr-namespace:HealthcareApp;assembly=HealthcareApp"
+             x:Class="HealthcareApp.View.MyAppointmentPage"
+             Title="My Appointments">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterBase64ImageSource x:Key="Base64ToImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView  x:Name="listView"
+                   HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="25,10,25,10" >
+
+                                <StackLayout Orientation="Horizontal"
+                                         BackgroundColor="White">
+                                    <custom1:CircleImage Source="{Binding DocImage,
+                                            Converter={StaticResource Base64ToImageConverter}}" 
+                                            Aspect="Fill"
+                                            HeightRequest="70"
+                                            WidthRequest="70"
+                                              Margin="10,-5,25,-5"/>
+                                    <StackLayout Orientation="Vertical"
+                                                 HorizontalOptions="Center">
+                                        <Label Text="{Binding DoctorName}"
+                                   FontAttributes="Bold"
+                                   FontSize="15"
+                                   Margin="0,5,0,0"/>
+                                        <Label Text="{Binding AppoinemtDate}"
+                                   FontSize="13"/>
+                                        <Button Text="Join Meeting"
+                                            BackgroundColor="#2E86C1"
+                                            TextColor="White"
+                                            FontSize="11" 
+                                            FontAttributes="Bold"
+                                            HeightRequest="40"
+                                            WidthRequest="150"
+                                            CornerRadius="10"
+                                            x:Name="jionMeetButton"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="JionMeetingButtonClicked"/>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

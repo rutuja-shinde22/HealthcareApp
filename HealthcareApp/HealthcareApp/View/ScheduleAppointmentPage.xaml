@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.ScheduleAppointmentPage"
+             xmlns:local="clr-namespace:HealthcareApp;assembly=HealthcareApp"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterBase64ImageSource x:Key="Base64ToImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Padding="0,0,0,10">
+            <Label Text="Schedule Appointment" FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+            <!--<SearchBar BackgroundColor="White" 
+                       Placeholder="Doctor Name"
+                       Margin="0,0,10,20"
+                       PlaceholderColor="Gray"
+                       FontSize="10"
+                       HeightRequest="20"
+                       TextChanged="SearchBar_TextChanged"/>-->
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Picker x:Name="picker"
+                    Title="    Select Specialization"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    ItemDisplayBinding="{Binding Specilaity}"
+                    Margin="20,10"
+                        HorizontalOptions="FillAndExpand"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+                <Image Source="downArrow"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Margin="-20,0,15,0"/>
+            </StackLayout>
+
+            <ListView  x:Name="listView"
+                   HasUnevenRows="True"
+                   ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="25,10,25,10" >
+
+                                <StackLayout Orientation="Horizontal"
+                                         BackgroundColor="White">
+                                    <custom1:CircleImage Source="{Binding Photo,
+                                            Converter={StaticResource Base64ToImageConverter}}" 
+                                            Aspect="Fill"
+                                            HeightRequest="70"
+                                            WidthRequest="70"
+                                              Margin="10,-5,5,-5"/>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding DoctorName}"
+                                   FontAttributes="Bold"
+                                   FontSize="15"
+                                   Margin="0,5,0,0"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Charges}"
+                                   FontSize="13"/>
+                                            <Label Text="₹"
+                                   FontSize="13"/>
+                                        </StackLayout>
+                                        <Label Text="{Binding PractisingFrom}"
+                                   FontSize="13"
+                                   FontAttributes="Italic"/>
+
+                                        <!--<Label Text="{Binding DoctorId}"
+                                   FontAttributes="Italic"
+                                   FontSize="12"/>-->
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

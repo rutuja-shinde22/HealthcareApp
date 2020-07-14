@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="HealthcareApp.View.ProfilePage"
+             Title="User Profile">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout  BackgroundColor="#3498DB">
+                <custom1:CircleImage x:Name="userImage"
+                    HeightRequest="100"
+                    WidthRequest="100"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand">
+                    <Label Text="Hello"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           Margin="0,5"/>
+                    <Label x:Name="UserName"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Margin="0,5"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+
+                <StackLayout
+                Orientation="Horizontal">
+                    <Image Source="user"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Name: "
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                    <Label x:Name="Name"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="DOB"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Date Of Birth:"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                    <Label x:Name="BOD"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Email"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Email Id: "
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                    <Label x:Name="EmailId"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Mobile"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Mobile No: "
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                    <Label x:Name="MobileNo"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Address"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Address: "
+                       HorizontalOptions="Fill"
+                       Style="{StaticResource Key=ProfileLabel}"/>
+                    <Entry x:Name="Address"
+                           FontSize="12"
+                           WidthRequest="150"/>
+                </StackLayout>
+
+                <!--<StackLayout Orientation="Horizontal">
+                    <Image Source="Logout"
+                       HeightRequest="25"
+                       WidthRequest="25"/>
+                    <Label Text="Logout "
+                       HorizontalOptions="Fill"
+                       Style="{StaticResource Key=ProfileLabel}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LogoutTextTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>-->
+
+
+                <!--</StackLayout>-->
+
+                <Button Text="Save"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#3498DB"
+                        Clicked="SaveButton_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthcareApp.View.SignUpPage"
+             xmlns:local11="clr-namespace:HealthcareApp.Renderers"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6.25*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.25*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                  BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalOptions="Center"
+                       Source="Banner"
+                       Aspect="Fill"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <Label Text=" Don't drink sugar calories" FontSize="14" 
+                           HorizontalOptions="Center"
+                           TextColor="Black"/>
+                    <Label Text="Sugary drinks are among the most fattening items you can put into your body." 
+                                  FontSize="8"
+                                  Margin="0,0,0,-5"/>
+                    <Label Text="This is because your brain doesn't measure calories from liquid sugar the same"
+                           FontSize="8" Margin="0,0,0,-5"/>
+                    <Label Text="way it does for solid food." FontSize="8"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+            <!--<Image Source="Banner"
+                   Aspect="AspectFill"
+                   Grid.Row="0"
+                   Grid.Column="0"/>-->
+
+            <!--<Label Text="Welcome Back :)"
+                   TextColor="Black"
+                   FontSize="22"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+
+            <Label Text=" We Keep Your Medical Data"
+                   TextColor="Black"
+                   FontAttributes="Italic"
+                   HorizontalOptions="Center"
+                   FontSize="15"
+                   Grid.Row="2"
+                   Grid.Column="0"/>-->
+
+            <local11:RoundedCornerEntry
+                   Placeholder="User Name"
+                   x:Name="Username"
+                   FontSize="13"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                Margin="17,2"/>
+
+            <local11:RoundedCornerEntry 
+                   Placeholder="Email"
+                   x:Name="Email"
+                   FontSize="13"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Margin="17,2"/>
+            
+            <local11:RoundedCornerEntry
+                   Placeholder="Password"
+                   x:Name="Password"
+                   IsPassword="True"
+                   FontSize="13"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Margin="17,2"/>
+
+            <local11:RoundedCornerEntry 
+                   Placeholder="Confirm Password"
+                   x:Name="CenfirmPassword"
+                   IsPassword="True"
+                   FontSize="13"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Margin="17,2"/>
+            <StackLayout  Grid.Row="5"
+                       Grid.Column="0"
+                          Orientation="Horizontal">
+                <Image Source="BoxUncheck"
+                       Margin="15,5,0,0"/>
+
+                <Label Text="I have read and agree to the term and conditions"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                       FontSize="12"/>
+            </StackLayout>
+
+            <Button Text="SignUp"
+                    BorderRadius="40"
+                    BorderWidth="2"
+                    TextColor="White"
+                    BackgroundColor="#2E86C1"
+                    FontSize="9"
+                    FontAttributes="Bold"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    x:Name="loginButton"
+                    Clicked="LoginButton_Clicked"
+                     Margin="17,0"/>
+
+            <Label Text="Already have an account? Sign In"
+                       TextColor="#2E86C1"
+                       Margin="0,-6,0,8"
+                       FontSize="11"
+                       FontAttributes="Bold"
+                       Grid.Row="7"
+                       Grid.Column="0"
+                       HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SignInTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

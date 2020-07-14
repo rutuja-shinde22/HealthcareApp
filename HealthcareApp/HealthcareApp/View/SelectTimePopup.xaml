@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="HealthcareApp.View.SelectTimePopup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <ScrollView Orientation="Both">
+    <StackLayout Margin="-5,5,2,5"
+                 Padding="24"
+                 BackgroundColor="Blue"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+            <ImageButton HorizontalOptions="StartAndExpand"
+                   VerticalOptions="StartAndExpand"
+                         Source="close"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         Clicked="ImageButton_Clicked"/>
+
+            <StackLayout Orientation="Horizontal">
+            <Button Text="10.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button1"
+                    Clicked="Button1_Clicked"/>
+            <Button Text="10.15"
+                           Style="{StaticResource buttonStyle}"
+                    x:Name="Button2"
+                    Clicked="Button2_Clicked"/>
+            <Button Text="10.30"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button3"
+                    Clicked="Button3_Clicked"/>
+            <Button Text="10.45"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button4"
+                    Clicked="Button4_Clicked"/>
+            <Button Text="11.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button5"
+                    Clicked="Button5_Clicked"/>
+            <Button Text="11.15"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button6"
+                    Clicked="Button6_Clicked"/>
+            <Button Text="11.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button7"
+                    Clicked="Button7_Clicked"/>
+            <Button Text="11.45"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button8"
+                    Clicked="Button8_Clicked"/>
+            
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="12.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button9"
+                    Clicked="Button9_Clicked"/>
+            <Button Text="12.15"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button10"
+                    Clicked="Button10_Clicked"/>
+            <Button Text="12.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button11"
+                    Clicked="Button11_Clicked"/>
+            <Button Text="12.45"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button12"
+                    Clicked="Button12_Clicked"/>
+            <Button Text="1.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button13"
+                    Clicked="Button13_Clicked"/>
+            <Button Text="1.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button14"
+                    Clicked="Button14_Clicked"/>
+            <Button Text="1.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button15"
+                    Clicked="Button15_Clicked"/>
+            <Button Text="1.45"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button16"
+                    Clicked="Button16_Clicked"/>
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="2.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button17"
+                    Clicked="Button17_Clicked"/>
+            <Button Text="2.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button18"
+                    Clicked="Button18_Clicked"/>
+            <Button Text="2.30"
+                          Style="{StaticResource buttonStyle}"
+                    x:Name="Button19"
+                    Clicked="Button19_Clicked"/>
+            <Button Text="2.45"
+                           Style="{StaticResource buttonStyle}"
+                    x:Name="Button20"
+                    Clicked="Button20_Clicked"/>
+            <Button Text="3.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button21"
+                    Clicked="Button21_Clicked"/>
+            <Button Text="3.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button22"
+                    Clicked="Button22_Clicked"/>
+            <Button Text="3.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button23"
+                    Clicked="Button23_Clicked"/>
+            <Button Text="3.45"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button24"
+                    Clicked="Button24_Clicked"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="4.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button25"
+                    Clicked="Button25_Clicked"/>
+            <Button Text="4.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button26"
+                    Clicked="Button26_Clicked"/>
+            <Button Text="4.30"
+                          Style="{StaticResource buttonStyle}"
+                    x:Name="Button27"
+                    Clicked="Button27_Clicked"/>
+            <Button Text="4.45"
+                           Style="{StaticResource buttonStyle}"
+                    x:Name="Button28"
+                    Clicked="Button28_Clicked"/>
+            <Button Text="5.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button29"
+                    Clicked="Button29_Clicked"/>
+            <Button Text="5.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button30"
+                    Clicked="Button30_Clicked"/>
+            <Button Text="5.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button31"
+                    Clicked="Button31_Clicked"/>
+            <Button Text="5.45"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button32"
+                    Clicked="Button32_Clicked"/>
+        </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                     >
+                <Button Text="6.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button33"
+                    Clicked="Button33_Clicked"/>
+                <Button Text="6.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button34"
+                    Clicked="Button34_Clicked"/>
+                <Button Text="6.30"
+                          Style="{StaticResource buttonStyle}"
+                    x:Name="Button35"
+                    Clicked="Button35_Clicked"/>
+                <Button Text="6.45"
+                           Style="{StaticResource buttonStyle}"
+                    x:Name="Button36"
+                    Clicked="Button36_Clicked"/>
+                <Button Text="7.00"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button37"
+                    Clicked="Button37_Clicked"/>
+                <Button Text="8.15"
+                            Style="{StaticResource buttonStyle}"
+                    x:Name="Button38"
+                    Clicked="Button38_Clicked"/>
+                <Button Text="8.30"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button39"
+                    Clicked="Button39_Clicked"/>
+                <Button Text="8.45"
+                             Style="{StaticResource buttonStyle}"
+                    x:Name="Button40"
+                    Clicked="Button40_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</pages:PopupPage>
