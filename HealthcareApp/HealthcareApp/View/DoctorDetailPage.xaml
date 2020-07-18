@@ -34,7 +34,7 @@
                                     x:Name="datePicker"
                                     TextColor="Black"
                                     DateSelected="DatePicker_DateSelected"/>
-                    <Label Text="Availablity"
+                    <Label Text="Availability"
                                TextColor="Black"
                                FontAttributes="Bold"
                                x:Name="availability"
@@ -53,7 +53,30 @@
                         <StackLayout x:Name="MyButtons"/>
                     </ScrollView>
                 </Frame>
-                <StackLayout Orientation="Horizontal">
+                
+                <StackLayout Orientation="Horizontal"
+                             Margin="20,0,0,0">
+                    <!--<Image Source="BoxUncheck"
+                           HeightRequest="25"
+                           WidthRequest="25"
+                       Margin="15,0,0,0"/>-->
+                    <ia:Checkbox x:Name="VedioCunsultationCheckbox"
+                        OutlineColor="#2E86C1"
+                        FillColor="#2E86C1"
+                        CheckColor="White"
+                        Shape="Rectangle"
+                        IsCheckedChanged="VedioCunsultationCheckChanged"/>
+
+                    <Label Text="Do you want to book video Consultation"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                       FontSize="13"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical"
+                             x:Name="payvisiblity"
+                             IsVisible="False">
+                    <StackLayout Orientation="Horizontal">
                     <Picker x:Name="picker"
                                  Title="Select Payment Mode"
                                  TextColor="Black"
@@ -72,27 +95,11 @@
                            IsVisible="False"
                            PlaceholderColor="Black"
                            TextColor="Black"
-                            Margin="20,-10,10,30"
+                            Margin="20,-10,10,5"
                            FontSize="12"/>
-
-                <StackLayout Orientation="Horizontal"
-                             Margin="20,0,0,0">
-                    <!--<Image Source="BoxUncheck"
-                           HeightRequest="25"
-                           WidthRequest="25"
-                       Margin="15,0,0,0"/>-->
-                    <ia:Checkbox x:Name="VedioCunsultationCheckbox"
-                        OutlineColor="#2E86C1"
-                        FillColor="#2E86C1"
-                        CheckColor="White"
-                        Shape="Rectangle"
-                        IsCheckedChanged="VedioCunsultationCheckChanged"/>
-
-                    <Label Text="Do you want to book vedio conferancing"
-                       HorizontalOptions="Center"
-                       TextColor="Black"
-                       FontSize="13"/>
                 </StackLayout>
+
+
 
             </StackLayout>
             <!--</Frame>-->

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HealthcareApp.View.SignUpPage"
              xmlns:local11="clr-namespace:HealthcareApp.Renderers"
+            xmlns:ia="clr-namespace:IntelliAbb.Xamarin.Controls;assembly=IntelliAbb.Xamarin.Controls"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid>
@@ -114,13 +115,17 @@
             <StackLayout  Grid.Row="5"
                        Grid.Column="0"
                           Orientation="Horizontal">
-                <Image Source="BoxUncheck"
-                       Margin="15,5,0,0"/>
+                <ia:Checkbox x:Name="checkbox"
+                             Margin="20,0,0,0"
+                        OutlineColor="#2E86C1"
+                        FillColor="#2E86C1"
+                        CheckColor="White"
+                        Shape="Rectangle"/>
 
                 <Label Text="I have read and agree to the term and conditions"
                        HorizontalOptions="Center"
                        TextColor="Black"
-                       FontSize="12"/>
+                       FontSize="9"/>
             </StackLayout>
 
             <Button Text="SignUp"
@@ -138,8 +143,8 @@
 
             <Label Text="Already have an account? Sign In"
                        TextColor="#2E86C1"
-                       Margin="0,-6,0,8"
-                       FontSize="11"
+                       Margin="0,-5,0,8"
+                       FontSize="8"
                        FontAttributes="Bold"
                        Grid.Row="7"
                        Grid.Column="0"

@@ -134,12 +134,12 @@ namespace HealthcareApp.View
                 }
                 if (msg == "Success")
                 {
-                    await DisplayAlert("Appointment Booked", "Your appointment is booked successfully", "Ok");
+                    await DisplayAlert("", "Your appointment is booked successfully", "Ok");
 
                 }
                 else
                 {
-                    await DisplayAlert("Something went wrong!", "Please enter values correctly", "Ok");
+                    await DisplayAlert("", "Please enter values correctly", "Ok");
                 }
             }
         }
@@ -153,6 +153,8 @@ namespace HealthcareApp.View
             DisplayTimeSloats();
 
         }
+       
+      
 
         private void SelectedPaymentOptionChanged(object sender, EventArgs e)
         {
@@ -177,10 +179,13 @@ namespace HealthcareApp.View
             if (VedioCunsultationCheckbox.IsChecked)
             {
                 vedioConsultationStatus = "true";
+                payvisiblity.IsVisible = true;
+
             }
             else if (!VedioCunsultationCheckbox.IsChecked)
             {
                 vedioConsultationStatus = "false";
+                payvisiblity.IsVisible = false;
             }
         }
     }

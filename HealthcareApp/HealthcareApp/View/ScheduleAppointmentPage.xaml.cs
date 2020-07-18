@@ -100,5 +100,10 @@ namespace HealthcareApp.View
             }
 
         }
+
+        private void DropDownImageClicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

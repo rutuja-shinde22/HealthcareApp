@@ -19,6 +19,9 @@ namespace HealthcareApp.View
         public string _branchId;
         public string _specializationId;
         private Uri uri;
+        string MeetUrl;
+        public bool VedioCunsultationStatus { get; private set; }
+
 
         public MyAppointmentPage()
         {
@@ -31,9 +34,10 @@ namespace HealthcareApp.View
             }
             displayBookedAppointments();
 
-
-
+           
         }
+
+       
 
         public async void displayBookedAppointments()
         {
@@ -43,10 +47,23 @@ namespace HealthcareApp.View
             {
                 //Deserialize object and save in res
                 var res = JsonConvert.DeserializeObject<List<MyAppointmentsModule>>(details);
-                listView.ItemsSource = res;
+              
+                //foreach (MyAppointmentsModule myAppointments in res)
+                //{
+                //    var vediourl = myAppointments.MeetingURL;
+                //    if (!string.IsNullOrEmpty(vediourl))
+                //    {
+                //        VedioCunsultationStatus = false;
+                //    }
+                //    else
+                //    {
+                //        VedioCunsultationStatus = false;
+                //    }
+                //}
+                //listView.ItemsSource = res;
             }
 
-        }
+         }
 
         private async void JionMeetingButtonClicked(object sender, EventArgs e)
         {
@@ -55,10 +72,10 @@ namespace HealthcareApp.View
             string _isVedioConsultation = item.videoConsultation;
             if (_isVedioConsultation == "True")
             {
-                string MeetUrl = item.MeetingURL;
+                MeetUrl = item.MeetingURL;
                 if (string.IsNullOrEmpty(MeetUrl))
                 {
-                    await DisplayAlert("", "Meeting will start within some time,please try after some time", "Ok");
+                    await DisplayAlert("", "Meeting will start within some time, please try after some time", "Ok");
                     return;
                 }
                 uri = new Uri(MeetUrl);

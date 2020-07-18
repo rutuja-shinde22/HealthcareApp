@@ -102,9 +102,9 @@
                     <StackLayout
                       HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Image Source="app"
+                        <Image Source="doc"
                                Style="{StaticResource Imagestyle}"/>
-                        <Label Text="  Schedule Appointment"
+                        <Label Text="   Schedule Appointment"
                               Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>
@@ -119,9 +119,9 @@
                     <StackLayout
                         HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Image Source="file"
+                        <Image Source="app"
                                   Style="{StaticResource Imagestyle}"/>
-                        <Label Text="    My &#10;Appointments"
+                        <Label Text="       My &#10;Appointments"
                                Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>
@@ -137,7 +137,7 @@
                        VerticalOptions="Center">
                         <Image Source="file"
                                   Style="{StaticResource Imagestyle}"/>
-                        <Label Text="    View Prescription"
+                        <Label Text="     View Prescription"
                               Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>
@@ -153,7 +153,7 @@
                        VerticalOptions="Center">
                         <Image Source="download"
                                  Style="{StaticResource Imagestyle}"/>
-                        <Label Text="Download   Report"
+                        <Label Text="Download    Report"
                              Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>
@@ -166,7 +166,9 @@
                     <StackLayout
                         HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Image Source="prescription"
+                        <Image Source="HealthTip"
+                               HeightRequest="40"
+                               WidthRequest="40"
                                  Style="{StaticResource Imagestyle}"/>
                         <Label Text="Health Tips"
                               Style="{StaticResource LabelStyle}"/>
