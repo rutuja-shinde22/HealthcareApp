@@ -2424,7 +2424,7 @@ namespace HealthcareApp.Droid
 			public const int doctor = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int downArrow = 2130837609;
+			public const int DounArrow = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
 			public const int download = 2130837610;

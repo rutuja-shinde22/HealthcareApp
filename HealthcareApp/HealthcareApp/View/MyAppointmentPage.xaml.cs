@@ -34,10 +34,20 @@ namespace HealthcareApp.View
             }
             displayBookedAppointments();
 
-           
+            if (!string.IsNullOrEmpty(MeetUrl))
+            {
+                VedioCunsultationStatus = false;
+            }
+            else
+            {
+                VedioCunsultationStatus = false;
+            }
+
+
+
         }
 
-       
+
 
         public async void displayBookedAppointments()
         {
@@ -48,19 +58,8 @@ namespace HealthcareApp.View
                 //Deserialize object and save in res
                 var res = JsonConvert.DeserializeObject<List<MyAppointmentsModule>>(details);
               
-                //foreach (MyAppointmentsModule myAppointments in res)
-                //{
-                //    var vediourl = myAppointments.MeetingURL;
-                //    if (!string.IsNullOrEmpty(vediourl))
-                //    {
-                //        VedioCunsultationStatus = false;
-                //    }
-                //    else
-                //    {
-                //        VedioCunsultationStatus = false;
-                //    }
-                //}
-                //listView.ItemsSource = res;
+               
+                listView.ItemsSource = res;
             }
 
          }

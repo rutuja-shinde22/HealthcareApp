@@ -38,7 +38,7 @@
                                         <Label Text="{Binding AppoinemtDate}"
                                    FontSize="13"/>
                                         <Button Text="Join video consultation"
-                                               IsVisible="False"
+                                             IsVisible="False"
                                             BackgroundColor="#2E86C1"
                                             TextColor="White"
                                             FontSize="10" 

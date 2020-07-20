@@ -12,7 +12,7 @@ namespace HealthcareApp
         {
             InitializeComponent();
   
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new LoginPage());
             //MainPage = new MasterDetailPageNav();
         }
 

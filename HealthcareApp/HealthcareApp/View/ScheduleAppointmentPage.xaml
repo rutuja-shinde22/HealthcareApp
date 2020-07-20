@@ -5,6 +5,7 @@
              xmlns:local="clr-namespace:HealthcareApp;assembly=HealthcareApp"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True"
+             xmlns:controls="clr-namespace:HealthcareApp.Renderers"
              xmlns:custom1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
 
     <ContentPage.Resources>
@@ -31,7 +32,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Picker x:Name="picker"
+                <controls:CustomPicker x:Name="picker"
                     Title="    Select Specialization"
                     TextColor="Black"
                     FontAttributes="Bold"
@@ -39,14 +40,14 @@
                     Margin="20,10"
                         HorizontalOptions="FillAndExpand"
                     SelectedIndexChanged="Picker_SelectedIndexChanged"/>
-                <Image Source="downArrow"
+                <!--<Image Source="downArrow"
                        HeightRequest="30"
                        WidthRequest="30"
                        Margin="-20,0,15,0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DropDownImageClicked"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
             </StackLayout>
 
             <ListView  x:Name="listView"

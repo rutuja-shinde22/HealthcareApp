@@ -91,7 +91,6 @@ namespace HealthcareApp.View
                     btn.Clicked += OnDynamicBtnClicked;
                     MyButtons.Children.Add(btn);
                     i++;
-
                 }
             }
         }
@@ -100,10 +99,8 @@ namespace HealthcareApp.View
         {
             var button = sender as Button;
             selectedTimeSlot = button.StyleId;
-
             DisplayAlert("Selected Time", selectedTimeSlot, "ok");
-            // button.TextColor = Color.Blue;
-            //button.BackgroundColor = Color.White;
+            button.TextColor = Color.Blue;
 
         }
 
@@ -111,17 +108,36 @@ namespace HealthcareApp.View
 
         private async void BookAppointmentButtonClicked(object sender, EventArgs e)
         {
+            //DateTime t1 = DateTime.Now;
+
+            //DateTime t2 = Convert.ToDateTime(selectedTimeSlot);
+
+            //int i = DateTime.Compare(t1, t2);
+
             updId = PayDetailsEntry.Text;
+
+            //check timesloat selection
             if (selectedTimeSlot == null)
             {
                 DisplayAlert("Time Slot Not Selected", "Please Select Time Slot", "Ok");
                 return;
             }
+
+            //ckeck payment mode
             if (!string.IsNullOrEmpty(selectedPaymentMode) && string.IsNullOrEmpty(updId))
             {
                 DisplayAlert("", "Please Enter Payment Details", "Ok");
                 return;
             }
+
+            //Check payment details when veddio cunsultation is on
+            if(vedioConsultationStatus== "true"&&string.IsNullOrEmpty(selectedPaymentMode))
+            {
+                DisplayAlert("", "Please Enter Payment Details", "Ok");
+                return;
+            }
+
+            //book appointent webapi call
             var details = await App.HealthSoapService.BookAppointment1(_clientId, selectedTimeSlot, _branchId, DocId, selectedDate, vedioConsultationStatus, updId, selectedPaymentMode);
             if (details != null)
             {
