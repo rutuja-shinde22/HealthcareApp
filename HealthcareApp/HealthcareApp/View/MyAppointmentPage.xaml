@@ -38,7 +38,6 @@
                                         <Label Text="{Binding AppoinemtDate}"
                                    FontSize="13"/>
                                         <Button Text="Join video consultation"
-                                             IsVisible="False"
                                             BackgroundColor="#2E86C1"
                                             TextColor="White"
                                             FontSize="10" 
@@ -48,7 +47,16 @@
                                             CornerRadius="10"
                                             x:Name="jionMeetButton"
                                             CommandParameter="{Binding .}"
-                                            Clicked="JionMeetingButtonClicked"/>
+                                            Clicked="JionMeetingButtonClicked">
+                                            <Button.Triggers>
+                                                <DataTrigger TargetType="Button"  Binding="{Binding videoConsultation}" Value="False">
+                                                    <Setter Property="IsVisible" Value="False"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Button"  Binding="{Binding videoConsultation}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"/>
+                                                </DataTrigger>
+                                            </Button.Triggers>
+                                        </Button>
 
                                     </StackLayout>
                                 </StackLayout>
