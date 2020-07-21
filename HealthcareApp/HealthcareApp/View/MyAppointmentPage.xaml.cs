@@ -22,9 +22,9 @@ namespace HealthcareApp.View
         string MeetUrl;
         public DateTime CurrentDate = DateTime.Now.Date;
         public DateTime appointmentDate;
-       // public string VedioCunsultationStatus { get; set; }
+        public string VedioCunsultationStatus { get; set; }
 
-
+            
         public MyAppointmentPage()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace HealthcareApp.View
             }
             displayBookedAppointments();
             
-
+            
             //if (!string.IsNullOrEmpty(MeetUrl))
             //{
             //    VedioCunsultationStatus = "True";
@@ -49,7 +49,7 @@ namespace HealthcareApp.View
 
 
         }
-
+        
 
 
         public async void displayBookedAppointments()

@@ -43,8 +43,6 @@ namespace HealthcareApp.View
             {
                 _clientId = Application.Current.Properties["ClientId"].ToString();
                 _branchId = Application.Current.Properties["BranchId"].ToString();
-                //_userName = Application.Current.Properties["Username"].ToString();
-
             }
             DisplayTimeSloats();
 
@@ -63,7 +61,11 @@ namespace HealthcareApp.View
 
         public async void DisplayTimeSloats()
         {
+            try {
+                //get selected day in required format
             selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
+
+                //get Timeslots array
             var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, selectedDate);
             if ((details != null) && (details.Length > 0))
             {
@@ -77,21 +79,72 @@ namespace HealthcareApp.View
                 int count = item.Slots.Count();
                 if (count == 1)
                 {
-                    availability.Text = "Not Available";
+                    availability.Text = "Not Available! Please select another date";
+                        TimelotsFrame.IsVisible = false;
                     return;
                 }
-                while (i < count)
-                {
-                    var btn = new Button()
+                    i = 0;
+                    while (i < count)
                     {
-                        Text = item.Slots[i], //Whatever prop you wonna put as title;
-                        StyleId = item.Slots[i]   //use a property from event as id to be passed to handler
+                        var btn = new Button()
+                        {
+                            Text = item.Slots[i], //Whatever prop you wonna put as title;
+                            StyleId = item.Slots[i]   //use a property from event as id to be passed to handler
 
-                    };
-                    btn.Clicked += OnDynamicBtnClicked;
-                    MyButtons.Children.Add(btn);
-                    i++;
-                }
+                        };
+                        //check selected day and display time slots depends on seleceted day
+                        DateTime TodayDate = Convert.ToDateTime(selectedDate);
+                        DateTime CurrentDate = DateTime.Now.Date;
+                        int result = DateTime.Compare(TodayDate, CurrentDate);
+
+                        //selected day in future display all time slots
+                        if (result == 1)
+                        {
+                            TimelotsFrame.IsVisible = true;
+                            availability.Text = "Available";
+                            btn.Clicked += OnDynamicBtnClicked;
+                            MyButtons.Children.Add(btn);
+                            i++;
+                        }
+                        //selected day is today display valid time slots
+                        else if (result == 0)
+                        {
+                            DateTime _currentTime = Convert.ToDateTime(Currenttime);
+                            string timeslotvalue = btn.Text;
+                            DateTime _time = Convert.ToDateTime(timeslotvalue);
+                            int res = DateTime.Compare(_time, _currentTime);
+                            //time in past
+                            if (res < 0)
+                            {
+                                TimelotsFrame.IsVisible = false;
+                                btn.IsVisible = false;
+                                availability.Text = "Not Available! Please select another date";
+                               
+
+                            }
+                            //current time
+                            else if (res == 0)
+                            {
+                                TimelotsFrame.IsVisible = true;
+                                btn.IsVisible = true;
+                                availability.Text = "Available";
+                            }
+                            //future time
+                            else
+                            {
+                               TimelotsFrame.IsVisible = true;
+                                btn.IsVisible = true;
+                                availability.Text = "Available";
+                            }
+                            btn.Clicked += OnDynamicBtnClicked;
+                            MyButtons.Children.Add(btn);
+                            i++;
+                        }
+                    }
+            }
+            }catch(Exception ex)
+            {
+                string m=ex.Message;
             }
         }
 
@@ -108,18 +161,12 @@ namespace HealthcareApp.View
 
         private async void BookAppointmentButtonClicked(object sender, EventArgs e)
         {
-            //DateTime t1 = DateTime.Now;
-
-            //DateTime t2 = Convert.ToDateTime(selectedTimeSlot);
-
-            //int i = DateTime.Compare(t1, t2);
-
             updId = PayDetailsEntry.Text;
 
             //check timesloat selection
             if (selectedTimeSlot == null)
             {
-                DisplayAlert("Time Slot Not Selected", "Please Select Time Slot", "Ok");
+                DisplayAlert("Time Not Selected", "Please Select Time Slot", "Ok");
                 return;
             }
 

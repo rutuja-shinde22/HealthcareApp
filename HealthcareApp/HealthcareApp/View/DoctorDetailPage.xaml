@@ -46,7 +46,7 @@
                                    Margin="0,0,0,10"/>-->
                     <!--</StackLayout>-->
                 </StackLayout>
-                <Frame  
+                <Frame  x:Name="TimelotsFrame"
                             HeightRequest="200">
                     <ScrollView Orientation="Both"
                                     VerticalScrollBarVisibility="Always"
