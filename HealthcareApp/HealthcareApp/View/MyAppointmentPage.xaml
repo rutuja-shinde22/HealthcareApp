@@ -49,10 +49,10 @@
                                             CommandParameter="{Binding .}"
                                             Clicked="JionMeetingButtonClicked">
                                             <Button.Triggers>
-                                                <DataTrigger TargetType="Button"  Binding="{Binding videoConsultation}" Value="False">
+                                                <DataTrigger TargetType="Button"  Binding="{Binding v}" Value="False">
                                                     <Setter Property="IsVisible" Value="False"/>
                                                 </DataTrigger>
-                                                <DataTrigger TargetType="Button"  Binding="{Binding videoConsultation}" Value="True">
+                                                <DataTrigger TargetType="Button"  Binding="{Binding v}" Value="True">
                                                     <Setter Property="IsVisible" Value="True"/>
                                                 </DataTrigger>
                                             </Button.Triggers>

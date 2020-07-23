@@ -23,6 +23,8 @@ namespace HealthcareApp.View
         public DateTime CurrentDate = DateTime.Now.Date;
         public DateTime appointmentDate;
         public string VedioCunsultationStatus { get; set; }
+        public string resconstatus;
+        public string resdate;
 
             
         public MyAppointmentPage()
@@ -35,19 +37,6 @@ namespace HealthcareApp.View
                 _branchId = Application.Current.Properties["BranchId"].ToString();
             }
             displayBookedAppointments();
-            
-            
-            //if (!string.IsNullOrEmpty(MeetUrl))
-            //{
-            //    VedioCunsultationStatus = "True";
-            //}
-            //else
-            //{
-            //    VedioCunsultationStatus = "False";
-            //}
-
-
-
         }
         
 
@@ -60,6 +49,23 @@ namespace HealthcareApp.View
             {
                 //Deserialize object and save in res
                 var res = JsonConvert.DeserializeObject<List<MyAppointmentsModule>>(details);
+                foreach(var item in res)
+                {
+                    resconstatus = item.videoConsultation;
+                    resdate = item.AppoinemtDate;
+
+                    appointmentDate = Convert.ToDateTime(resdate);
+                    int result = DateTime.Compare(appointmentDate, CurrentDate);
+                    if (resconstatus == "True" && result>=0)
+                    {
+                        item.v = "True";
+                    }
+                    else
+                    {
+                        item.v = "False";
+                    }
+                }
+
                 listView.ItemsSource = res;
             }
 
@@ -69,22 +75,9 @@ namespace HealthcareApp.View
         {
             var button = sender as Button;
             var item = button.CommandParameter as MyAppointmentsModule;
-            appointmentDate = Convert.ToDateTime(item.AppoinemtDate);
             string _isVedioConsultation = item.videoConsultation;
 
-            int result = DateTime.Compare(appointmentDate,CurrentDate );
-
-            if (result < 0)
-            {
-                Console.WriteLine("First date is earlier");
-                DisplayAlert("", "This Meeting is expired", "Ok");
-                button.BackgroundColor = Color.White;
-                return;
-            }
-            //else if (result == 0)
-            //    Console.WriteLine("Both dates are same");
-            //else
-            //    Console.WriteLine("First date is later");
+            
             if (_isVedioConsultation == "True")
             {
                 MeetUrl = item.MeetingURL;

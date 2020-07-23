@@ -14,7 +14,8 @@ namespace HealthcareApp.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-
+        public string _username;
+        public string _password;
         public LoginPage()
         {
             InitializeComponent();
@@ -23,8 +24,8 @@ namespace HealthcareApp.View
         {
 
             //get username & password from entry
-            var _username = Username.Text;
-            var _password = Password.Text;
+             _username = Username.Text;
+             _password = Password.Text;
 
             //  Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Please Wait...");
 
@@ -43,9 +44,6 @@ namespace HealthcareApp.View
                     Application.Current.Properties["PatientName"] = login.PatientName;
                     Application.Current.Properties["Branch_EmailId"] = login.Branch_EmailId;
                 }
-
-
-
                 //Navigate to next page if username and password match 
                 await Navigation.PushAsync(new HomePage());
 

@@ -21,7 +21,7 @@ namespace HealthcareApp.View
         public string DocId;
         public string _branchId;
         public string _clientId;
-        public string selectedDate = DateTime.Now.Date.ToLongDateString();
+        public string selectedDate = DateTime.Now.Date.ToString("dd-MMM-yyyy");
         public string Currenttime = DateTime.Now.ToString("h:mm tt");
         public string selectedDay;
         public string selectedTimeSlot;
@@ -66,7 +66,7 @@ namespace HealthcareApp.View
             selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
 
                 //get Timeslots array
-            var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, selectedDate);
+            var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, "28-jul-2020");
             if ((details != null) && (details.Length > 0))
             {
                 //Deserialize object and save in res
@@ -185,8 +185,10 @@ namespace HealthcareApp.View
             }
 
             //book appointent webapi call
-            var details = await App.HealthSoapService.BookAppointment1(_clientId, selectedTimeSlot, _branchId, DocId, selectedDate, vedioConsultationStatus, updId, selectedPaymentMode);
-            if (details != null)
+            try {
+               
+                var details = await App.HealthSoapService.BookAppointment1(_clientId, selectedTimeSlot, _branchId, DocId, selectedDate, vedioConsultationStatus, updId, selectedPaymentMode);
+               if (details != null)
             {
                 //Deserialize object and save in res
                 var msg = "";
@@ -200,16 +202,24 @@ namespace HealthcareApp.View
                     await DisplayAlert("", "Your appointment is booked successfully", "Ok");
 
                 }
+                    else if(msg== "Appointment already booked under this doctor")
+                    {
+                        await DisplayAlert("", "You already have an appointment with this doctor", "Ok");
+                    }
                 else
                 {
                     await DisplayAlert("", "Please enter values correctly", "Ok");
                 }
             }
+            }catch(Exception ex)
+            {
+                var m=ex.Message;
+            }
         }
 
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            selectedDate = e.NewDate.ToLongDateString();
+            selectedDate = e.NewDate.ToString("dd-MMM-yyyy");
 
             selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
             // selectedDay = System.DateTime.Now.ToString(selectedDate);

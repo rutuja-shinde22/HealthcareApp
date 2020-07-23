@@ -13,6 +13,7 @@ namespace HealthcareApp.Model
         public string DocImage { get; set; }
         public string MeetingURL { get; set; }
         public string videoConsultation { get; set; }
+        public string v { get; set; }
     }
     
 }
