@@ -35,7 +35,6 @@ namespace HealthcareApp.View
             {
                 //Deserialize object and save in res
                 var res = JsonConvert.DeserializeObject<List<Login>>(details);
-
                 foreach (Login login in res)
                 {
                     Application.Current.Properties["Username"] = login.Username;
@@ -44,8 +43,11 @@ namespace HealthcareApp.View
                     Application.Current.Properties["PatientName"] = login.PatientName;
                     Application.Current.Properties["Branch_EmailId"] = login.Branch_EmailId;
                 }
+
                 //Navigate to next page if username and password match 
                 await Navigation.PushAsync(new HomePage());
+
+               
 
             }
             else

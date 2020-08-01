@@ -76,7 +76,7 @@
                        Style="{StaticResource Key=ProfileLabel}"/>
                     <Entry x:Name="Address"
                            FontSize="12"
-                           WidthRequest="150"/>
+                           HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
 
                 <!--<StackLayout Orientation="Horizontal">

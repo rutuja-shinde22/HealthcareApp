@@ -66,14 +66,14 @@ namespace HealthcareApp.View
             selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
 
                 //get Timeslots array
-            var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, "28-jul-2020");
+            var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, selectedDate);
             if ((details != null) && (details.Length > 0))
             {
                 //Deserialize object and save in res
                 timeslotsList = JsonConvert.DeserializeObject<List<TimeSlotsModel>>(details);
             }
             //set values to buttons
-            //  MyButtons.Children.Clear(); //just in case so you can call this code several times np..
+             MyButtons.Children.Clear(); //just in case so you can call this code several times np..
             foreach (var item in timeslotsList)
             {
                 int count = item.Slots.Count();
@@ -153,6 +153,7 @@ namespace HealthcareApp.View
             var button = sender as Button;
             selectedTimeSlot = button.StyleId;
             DisplayAlert("Selected Time", selectedTimeSlot, "ok");
+            
             button.TextColor = Color.Blue;
 
         }

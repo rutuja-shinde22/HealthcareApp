@@ -14,6 +14,7 @@ namespace HealthcareApp.Model
         public string MeetingURL { get; set; }
         public string videoConsultation { get; set; }
         public string v { get; set; }
+        public string Specialist { get; set; }
     }
     
 }

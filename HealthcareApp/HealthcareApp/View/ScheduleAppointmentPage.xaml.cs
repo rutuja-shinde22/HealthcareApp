@@ -76,6 +76,7 @@ namespace HealthcareApp.View
 
             var details = e.SelectedItem as ScheduleAppointmentModel;
             await Navigation.PushAsync(new DoctorDetailPage(details.DoctorName, details.PractisingFrom, details.DoctorId));
+            
         }
 
         private async void Picker_SelectedIndexChanged(object sender, EventArgs e)

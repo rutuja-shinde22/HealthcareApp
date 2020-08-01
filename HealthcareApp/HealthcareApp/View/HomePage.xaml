@@ -65,9 +65,9 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    x:Name="userImage">
-                <Image.GestureRecognizers>
+                <!--<Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SelectPictureFromGallery"/>
-                </Image.GestureRecognizers>
+                </Image.GestureRecognizers>-->
             </custom1:CircleImage>
 
             <StackLayout
@@ -153,7 +153,7 @@
                        VerticalOptions="Center">
                         <Image Source="download"
                                  Style="{StaticResource Imagestyle}"/>
-                        <Label Text="Download    Report"
+                        <Label Text="Download  Report"
                              Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>

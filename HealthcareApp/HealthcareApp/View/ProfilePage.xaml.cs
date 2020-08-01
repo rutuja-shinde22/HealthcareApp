@@ -97,7 +97,7 @@ namespace HealthcareApp.View
                 }
                 if (msg == "Updated")
                 {
-                    DisplayAlert("Address Updated", "Address Updated Successfully", "Ok");
+                    DisplayAlert("", "Address Updated Successfully", "Ok");
                 }
                 else
                 {
