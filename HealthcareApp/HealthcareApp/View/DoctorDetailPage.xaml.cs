@@ -26,9 +26,12 @@ namespace HealthcareApp.View
         public string selectedDay;
         public string selectedTimeSlot;
         public int i;
+        public int count;
+        public int halfcount;
         public string selectedPaymentMode;
         public string updId;
         public string vedioConsultationStatus = "false";
+      
 
         public DoctorDetailPage(string doctorName, string practicingFrom, string docId)
         {
@@ -63,7 +66,7 @@ namespace HealthcareApp.View
         {
             try {
                 //get selected day in required format
-            selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
+             selectedDay = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAbbreviatedDayName(DateTime.Parse(selectedDate).DayOfWeek);
 
                 //get Timeslots array
             var details = await App.HealthSoapService.DoctorTimeSlot1(DocId, selectedDay, _branchId, selectedDate);
@@ -71,12 +74,15 @@ namespace HealthcareApp.View
             {
                 //Deserialize object and save in res
                 timeslotsList = JsonConvert.DeserializeObject<List<TimeSlotsModel>>(details);
+                    
             }
             //set values to buttons
              MyButtons.Children.Clear(); //just in case so you can call this code several times np..
-            foreach (var item in timeslotsList)
+                
+                foreach (var item in timeslotsList)
             {
-                int count = item.Slots.Count();
+                 count = item.Slots.Count();
+                    halfcount = count / 2;
                 if (count == 1)
                 {
                     availability.Text = "Not Available! Please select another date";
@@ -89,8 +95,8 @@ namespace HealthcareApp.View
                         var btn = new Button()
                         {
                             Text = item.Slots[i], //Whatever prop you wonna put as title;
-                            StyleId = item.Slots[i]   //use a property from event as id to be passed to handler
-
+                            StyleId = item.Slots[i],  //use a property from event as id to be passed to handler
+                            TabIndex = i
                         };
                         //check selected day and display time slots depends on seleceted day
                         DateTime TodayDate = Convert.ToDateTime(selectedDate);
@@ -138,6 +144,7 @@ namespace HealthcareApp.View
                             }
                             btn.Clicked += OnDynamicBtnClicked;
                             MyButtons.Children.Add(btn);
+                            
                             i++;
                         }
                     }
@@ -147,15 +154,22 @@ namespace HealthcareApp.View
                 string m=ex.Message;
             }
         }
-
+      
         private void OnDynamicBtnClicked(object sender, EventArgs e)
         {
             var button = sender as Button;
             selectedTimeSlot = button.StyleId;
+            var index = button.TabIndex;
             DisplayAlert("Selected Time", selectedTimeSlot, "ok");
-            
-            button.TextColor = Color.Blue;
-
+            button.BackgroundColor = Color.Blue; 
+            if(index<halfcount)
+            {
+                stackVisiblity.IsVisible = true;
+            }
+            else
+            {
+                stackVisiblity.IsVisible = false;
+            }
         }
 
 
@@ -201,6 +215,7 @@ namespace HealthcareApp.View
                 if (msg == "Success")
                 {
                     await DisplayAlert("", "Your appointment is booked successfully", "Ok");
+                    await Navigation.PushAsync(new MyAppointmentPage());
 
                 }
                     else if(msg== "Appointment already booked under this doctor")

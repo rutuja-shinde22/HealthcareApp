@@ -27,8 +27,8 @@ namespace HealthcareApp.View
             try
             {
                 InitializeComponent();
+                
                 displaySpecialization();
-
             }
             catch (Exception ex)
             {
@@ -45,7 +45,6 @@ namespace HealthcareApp.View
                     _branchId = Application.Current.Properties["BranchId"].ToString();
                 }
                 base.OnAppearing();
-
             }
             catch (Exception ex)
             {
@@ -73,10 +72,16 @@ namespace HealthcareApp.View
             ////  int clubid = (int)btn.CommandParameter;
 
             //  await Navigation.PushAsync(new DoctorDetailPage());
+            if(e.SelectedItem!=null)
+            {
+                var details = e.SelectedItem as ScheduleAppointmentModel;
 
-            var details = e.SelectedItem as ScheduleAppointmentModel;
-            await Navigation.PushAsync(new DoctorDetailPage(details.DoctorName, details.PractisingFrom, details.DoctorId));
-            
+                listView.SelectedItem = null;
+                await Navigation.PushAsync(new DoctorDetailPage(details.DoctorName, details.PractisingFrom, details.DoctorId));
+
+            }
+
+
         }
 
         private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,15 +96,22 @@ namespace HealthcareApp.View
 
         public async void displayDoctorList()
         {
+            try
+            { 
             //display Appointment list based on specialistId
             var details = await App.HealthSoapService.FillDoctorList1(_branchId, SelectedId);
             if ((details != null) && (details.Length > 0))
             {
+               // listView.BeginRefresh();
                 //Deserialize object and save in res
                 var res = JsonConvert.DeserializeObject<List<ScheduleAppointmentModel>>(details);
                 listView.ItemsSource = res;
+               //  listView.EndRefresh();
             }
-
+            }catch(Exception e)
+            {
+                var msg = e.Message;
+            }
         }
 
         //private void DropDownImageClicked(object sender, EventArgs e)

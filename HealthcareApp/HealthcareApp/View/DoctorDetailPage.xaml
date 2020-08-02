@@ -54,8 +54,10 @@
                         <StackLayout x:Name="MyButtons"/>
                     </ScrollView>
                 </Frame>
-                
-                <StackLayout Orientation="Horizontal"
+
+                <StackLayout x:Name="stackVisiblity"
+                             Orientation="Horizontal"
+                             IsVisible="False"
                              Margin="20,0,0,0">
                     <!--<Image Source="BoxUncheck"
                            HeightRequest="25"

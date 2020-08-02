@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using HealthcareApp.Droid;
@@ -27,6 +28,7 @@ namespace HealthcareApp.Droid
                 Control.Background = Android.App.Application.Context.GetDrawable(Resource.Drawable.RoundedEntryText);
                 Control.Gravity = GravityFlags.CenterVertical;
                 Control.SetPadding(10, 0, 0, 0);
+                this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
             }
         }
     }
