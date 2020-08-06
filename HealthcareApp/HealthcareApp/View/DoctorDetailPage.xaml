@@ -40,6 +40,16 @@
                                FontAttributes="Bold"
                                x:Name="availability"
                                 FontSize="15"/>
+                    <StackLayout Orientation="Horizontal"
+                                 x:Name="vediotimeslotstack">
+                        <Label Text="Vedio consultation:"
+                               TextColor="Black"/>
+                        <Label x:Name="startTime"
+                               FontAttributes="Bold"/>
+                        <Label Text="To"/>
+                        <Label x:Name="endTime"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
                     <!--<Label Text="Timing 10 to 7"
                                TextColor="White"
                                 FontSize="15"
@@ -75,30 +85,30 @@
                        TextColor="Black"
                        FontSize="13"/>
                 </StackLayout>
-                
+
                 <StackLayout Orientation="Vertical"
                              x:Name="payvisiblity"
-                             IsVisible="False">
+                             IsVisible="True">
                     <StackLayout Orientation="Horizontal">
-                    <controls:CustomPicker x:Name="picker"
+                        <controls:CustomPicker x:Name="picker"
                                  Title="Select Payment Mode"
                                  TextColor="Black"
                                 FontSize="15"
                                  FontAttributes="Bold"
                                  ItemDisplayBinding="{Binding PaymentMode}"
-                                 Margin="20,10"
+                                 Margin="20,5"
                                  HorizontalOptions="FillAndExpand"
                                  SelectedIndexChanged="SelectedPaymentOptionChanged"/>
-                    <!--<Image Source="downArrow"
+                        <!--<Image Source="downArrow"
                        HeightRequest="25"
                        WidthRequest="25"
                        Margin="-25,0,15,0"/>-->
-                </StackLayout>
-                <Entry x:Name="PayDetailsEntry"
+                    </StackLayout>
+                    <Entry x:Name="PayDetailsEntry"
                            IsVisible="False"
                            PlaceholderColor="Black"
                            TextColor="Black"
-                            Margin="20,-10,10,5"
+                            Margin="20,-10,10,2"
                            FontSize="12"/>
                 </StackLayout>
 
@@ -119,7 +129,7 @@
                         TextColor="White"
                         FontSize="15"
                         CornerRadius="15"
-                        Margin="20,10,20,20"
+                        Margin="20,10"
                         FontAttributes="Bold"
                         Clicked="BookAppointmentButtonClicked"/>
             <!--</StackLayout>-->
@@ -142,7 +152,7 @@
                        FontSize="18"/>
 
             </StackLayout>-->
-
+        
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

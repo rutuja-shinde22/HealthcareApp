@@ -16,7 +16,6 @@ namespace HealthcareApp.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DoctorDetailPage : ContentPage
     {
-        bool buttonClicked = false;
         List<TimeSlotsModel> timeslotsList;
         public string DocId;
         public string _branchId;
@@ -31,7 +30,8 @@ namespace HealthcareApp.View
         public string selectedPaymentMode;
         public string updId;
         public string vedioConsultationStatus = "false";
-      
+        public string first;
+        public string middle;
 
         public DoctorDetailPage(string doctorName, string practicingFrom, string docId)
         {
@@ -48,7 +48,7 @@ namespace HealthcareApp.View
                 _branchId = Application.Current.Properties["BranchId"].ToString();
             }
             DisplayTimeSloats();
-
+            
         }
 
         public List<PaymentModeModel> paymentModeList = new List<PaymentModeModel>()
@@ -79,25 +79,50 @@ namespace HealthcareApp.View
             //set values to buttons
              MyButtons.Children.Clear(); //just in case so you can call this code several times np..
                 
-                foreach (var item in timeslotsList)
+          foreach (var item in timeslotsList)
             {
                  count = item.Slots.Count();
                     halfcount = count / 2;
+                    first = item.Slots.First();
+                    var last = item.Slots.Last();
+                    middle = item.Slots[halfcount];
+                   startTime.Text = first;
+                    endTime.Text = middle;
+                    
+                
                 if (count == 1)
                 {
                     availability.Text = "Not Available! Please select another date";
-                        TimelotsFrame.IsVisible = false;
+                    TimelotsFrame.IsVisible = false;
                     return;
                 }
                     i = 0;
                     while (i < count)
                     {
                         var btn = new Button()
+
                         {
                             Text = item.Slots[i], //Whatever prop you wonna put as title;
                             StyleId = item.Slots[i],  //use a property from event as id to be passed to handler
                             TabIndex = i
+                        
                         };
+                        int m = Convert.ToInt32(halfcount);
+                        //set all buttons to default color
+                        foreach (Button b in MyButtons.Children)
+                        {
+                            if (m >= b.TabIndex)
+                            {
+                                b.BackgroundColor = Color.LightGray;
+                                b.TextColor = Color.Black;
+                               
+                            }
+                            else
+                            {
+                                b.BackgroundColor = Color.LightSalmon;
+                                b.TextColor = Color.Black;
+                            }
+                        }
                         //check selected day and display time slots depends on seleceted day
                         DateTime TodayDate = Convert.ToDateTime(selectedDate);
                         DateTime CurrentDate = DateTime.Now.Date;
@@ -107,6 +132,8 @@ namespace HealthcareApp.View
                         if (result == 1)
                         {
                             TimelotsFrame.IsVisible = true;
+                            vediotimeslotstack.IsVisible = true;
+                            payvisiblity.IsVisible = true;
                             availability.Text = "Available";
                             btn.Clicked += OnDynamicBtnClicked;
                             MyButtons.Children.Add(btn);
@@ -124,6 +151,8 @@ namespace HealthcareApp.View
                             {
                                 TimelotsFrame.IsVisible = false;
                                 btn.IsVisible = false;
+                                vediotimeslotstack.IsVisible = false;
+                                payvisiblity.IsVisible = false;
                                 availability.Text = "Not Available! Please select another date";
                                
 
@@ -133,6 +162,8 @@ namespace HealthcareApp.View
                             {
                                 TimelotsFrame.IsVisible = true;
                                 btn.IsVisible = true;
+                                vediotimeslotstack.IsVisible = true;
+                                payvisiblity.IsVisible = true;
                                 availability.Text = "Available";
                             }
                             //future time
@@ -140,6 +171,8 @@ namespace HealthcareApp.View
                             {
                                TimelotsFrame.IsVisible = true;
                                 btn.IsVisible = true;
+                                vediotimeslotstack.IsVisible = true;
+                                payvisiblity.IsVisible = true;
                                 availability.Text = "Available";
                             }
                             btn.Clicked += OnDynamicBtnClicked;
@@ -148,21 +181,43 @@ namespace HealthcareApp.View
                             i++;
                         }
                     }
+                    setButtonColor();
             }
             }catch(Exception ex)
             {
                 string m=ex.Message;
             }
         }
-      
+      public void setButtonColor()
+        {
+            int m = Convert.ToInt32(halfcount);
+            //set all buttons to default color
+            foreach (Button b in MyButtons.Children)
+            {
+                if (m >= b.TabIndex)
+                {
+                    b.BackgroundColor = Color.LightGray;
+                    b.TextColor = Color.Black;
+                }
+                else
+                {
+                    b.BackgroundColor = Color.LightSalmon;
+                    b.TextColor = Color.Black;
+                }
+            }
+        }
         private void OnDynamicBtnClicked(object sender, EventArgs e)
         {
+            setButtonColor();
             var button = sender as Button;
             selectedTimeSlot = button.StyleId;
             var index = button.TabIndex;
-            DisplayAlert("Selected Time", selectedTimeSlot, "ok");
-            button.BackgroundColor = Color.Blue; 
-            if(index<halfcount)
+           // DisplayAlert("Selected Time", selectedTimeSlot, "ok");
+            button.BackgroundColor = Color.FromHex("#3498DB");
+            button.TextColor = Color.White;
+
+          //display online payment options olny for first half appointments
+            if (index<halfcount)
             {
                 stackVisiblity.IsVisible = true;
             }
@@ -215,7 +270,7 @@ namespace HealthcareApp.View
                 if (msg == "Success")
                 {
                     await DisplayAlert("", "Your appointment is booked successfully", "Ok");
-                    await Navigation.PushAsync(new MyAppointmentPage());
+                    await Navigation.PushAsync(new HomePage());
 
                 }
                     else if(msg== "Appointment already booked under this doctor")
@@ -268,13 +323,13 @@ namespace HealthcareApp.View
             if (VedioCunsultationCheckbox.IsChecked)
             {
                 vedioConsultationStatus = "true";
-                payvisiblity.IsVisible = true;
+               // payvisiblity.IsVisible = true;
 
             }
             else if (!VedioCunsultationCheckbox.IsChecked)
             {
                 vedioConsultationStatus = "false";
-                payvisiblity.IsVisible = false;
+               // payvisiblity.IsVisible = true;
             }
         }
     }
