@@ -250,5 +250,18 @@ namespace HealthcareApp.Droid
                 throw new NotImplementedException();
             }
         }
+
+        public async Task<string> UploadDocument(string PatientID, string DocumentType, string DocumentName, string DocumentExtension, string UploadDocument, string BranchID)
+        {
+            try
+            {
+                var result = service.UploadDocument(PatientID, DocumentType, DocumentName, DocumentExtension, UploadDocument,BranchID);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

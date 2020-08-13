@@ -15,6 +15,7 @@ namespace HealthcareApp.Model
         public string videoConsultation { get; set; }
         public string v { get; set; }
         public string Specialist { get; set; }
+        public string bgcolor { get; set; }
     }
     
 }

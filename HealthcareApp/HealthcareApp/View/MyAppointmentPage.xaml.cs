@@ -30,7 +30,7 @@ namespace HealthcareApp.View
         public MyAppointmentPage()
         {
             InitializeComponent();
-
+         
             if (Application.Current.Properties.ContainsKey("ClientId"))
             {
                 _clientId = Application.Current.Properties["ClientId"].ToString();
@@ -59,11 +59,23 @@ namespace HealthcareApp.View
                     if (resconstatus == "True" && result>=0)
                     {
                         item.v = "True";
+                       // item.bgcolor = "True";
+                        
                     }
                     else
                     {
                         item.v = "False";
+                       // item.bgcolor = "False";
                     }
+                    if (result >= 0)
+                    {
+                        item.bgcolor = "True";
+                    }
+                    else
+                    {
+                        item.bgcolor = "False";
+                    }
+
                 }
 
                 listView.ItemsSource = res;

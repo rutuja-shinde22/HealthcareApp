@@ -92,6 +92,10 @@ namespace HealthcareApp.View
         {
             Navigation.PushAsync(new HealthTipsPage());
         }
+        private void UploadDocumentTapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UploadDocumentPage());
+        }
 
         //private async void SelectPictureFromGallery(object sender, EventArgs e)
         //{
@@ -234,6 +238,6 @@ namespace HealthcareApp.View
             Navigation.PushAsync(new ChangePasswordPage());
         }
 
-
+       
     }
 }

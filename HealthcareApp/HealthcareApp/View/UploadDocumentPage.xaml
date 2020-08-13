@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HealthcareApp.Renderers"
+             x:Class="HealthcareApp.View.UploadDocumentPage"
+             Title="Upload Records">
+    <ContentPage.Content>
+        <StackLayout  Margin="20,10">
+            <controls:CustomPicker x:Name="picker"
+                    Title="    Select Document"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    ItemDisplayBinding="{Binding DocumentType}"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+            <Entry Placeholder="Enter Document Name"
+                   x:Name="documentName"/>
+            <Button Text="Select Document" 
+                    Clicked="SelectDocument_ButtonClicked"/>
+            <Button Text="Upload Document"
+                    CornerRadius="20"
+                    TextColor="White"
+                    BackgroundColor="#3498DB"
+                    Clicked="UploadButton_ButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

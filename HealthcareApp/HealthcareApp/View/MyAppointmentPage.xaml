@@ -21,8 +21,16 @@
                         <ViewCell>
                             <StackLayout Orientation="Vertical" Padding="25,10,25,10" >
 
-                                <StackLayout Orientation="Horizontal"
-                                         BackgroundColor="White">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout"  Binding="{Binding bgcolor}" Value="False">
+                                            <Setter Property="BackgroundColor" Value="LightSalmon"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="StackLayout"  Binding="{Binding bgcolor}" Value="True">
+                                            <Setter Property="BackgroundColor" Value="White"/>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+
                                     <custom1:CircleImage Source="{Binding DocImage,
                                             Converter={StaticResource Base64ToImageConverter}}" 
                                             Aspect="Fill"
@@ -45,7 +53,7 @@
                                             FontSize="10" 
                                             FontAttributes="Bold"
                                             HeightRequest="40"
-                                            WidthRequest="180"
+                                            WidthRequest="170"
                                             CornerRadius="10"
                                             x:Name="jionMeetButton"
                                             CommandParameter="{Binding .}"

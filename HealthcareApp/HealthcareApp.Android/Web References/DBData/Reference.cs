@@ -159,6 +159,8 @@ namespace HealthcareApp.Droid.DBData {
         
         private System.Threading.SendOrPostCallback GetConsultationChargesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UploadDocumentOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -391,6 +393,9 @@ namespace HealthcareApp.Droid.DBData {
         
         /// <remarks/>
         public event GetConsultationChargesCompletedEventHandler GetConsultationChargesCompleted;
+        
+        /// <remarks/>
+        public event UploadDocumentCompletedEventHandler UploadDocumentCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -2493,6 +2498,45 @@ namespace HealthcareApp.Droid.DBData {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UploadDocument", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UploadDocument(string PatientID, string DocumentType, string DocumentName, string DocumentExtension, [System.Xml.Serialization.XmlElementAttribute("UploadDocument")] string UploadDocument1, string BranchID) {
+            object[] results = this.Invoke("UploadDocument", new object[] {
+                        PatientID,
+                        DocumentType,
+                        DocumentName,
+                        DocumentExtension,
+                        UploadDocument1,
+                        BranchID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UploadDocumentAsync(string PatientID, string DocumentType, string DocumentName, string DocumentExtension, string UploadDocument1, string BranchID) {
+            this.UploadDocumentAsync(PatientID, DocumentType, DocumentName, DocumentExtension, UploadDocument1, BranchID, null);
+        }
+        
+        /// <remarks/>
+        public void UploadDocumentAsync(string PatientID, string DocumentType, string DocumentName, string DocumentExtension, string UploadDocument1, string BranchID, object userState) {
+            if ((this.UploadDocumentOperationCompleted == null)) {
+                this.UploadDocumentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadDocumentOperationCompleted);
+            }
+            this.InvokeAsync("UploadDocument", new object[] {
+                        PatientID,
+                        DocumentType,
+                        DocumentName,
+                        DocumentExtension,
+                        UploadDocument1,
+                        BranchID}, this.UploadDocumentOperationCompleted, userState);
+        }
+        
+        private void OnUploadDocumentOperationCompleted(object arg) {
+            if ((this.UploadDocumentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UploadDocumentCompleted(this, new UploadDocumentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -4326,6 +4370,32 @@ namespace HealthcareApp.Droid.DBData {
         private object[] results;
         
         internal GetConsultationChargesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void UploadDocumentCompletedEventHandler(object sender, UploadDocumentCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadDocumentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UploadDocumentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

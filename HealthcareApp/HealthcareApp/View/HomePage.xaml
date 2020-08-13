@@ -160,6 +160,7 @@
                         <TapGestureRecognizer Tapped="DownloadReportTapped"/>
                     </Frame.GestureRecognizers>
                 </Frame>
+                
                 <Frame  Style="{StaticResource FrameStyle}"
                        Grid.Row="2"
                        Grid.Column="0">
@@ -175,6 +176,23 @@
                     </StackLayout>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="HealthTipsTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame  Style="{StaticResource FrameStyle}"
+                       Grid.Row="2"
+                       Grid.Column="1">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="download"
+                               Rotation="180"
+                                 Style="{StaticResource Imagestyle}"/>
+                        <Label Text="  Upload Documents"
+                              Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="UploadDocumentTapped"/>
                     </Frame.GestureRecognizers>
                 </Frame>
             </Grid>

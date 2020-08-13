@@ -42,7 +42,7 @@
                                 FontSize="15"/>
                     <StackLayout Orientation="Horizontal"
                                  x:Name="vediotimeslotstack">
-                        <Label Text="Vedio consultation:"
+                        <Label Text="Video Consultation:"
                                TextColor="Black"/>
                         <Label x:Name="startTime"
                                FontAttributes="Bold"/>
@@ -80,7 +80,7 @@
                         Shape="Rectangle"
                         IsCheckedChanged="VedioCunsultationCheckChanged"/>
 
-                    <Label Text="Do you want to book video Consultation"
+                    <Label Text="Do you want to book video consultation"
                        HorizontalOptions="Center"
                        TextColor="Black"
                        FontSize="13"/>
