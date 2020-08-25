@@ -8,7 +8,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Frame" x:Key="FrameStyle">
-                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Margin" Value="5,1"/>
                 <Setter Property="BackgroundColor" Value="#2E86C1"/>
             </Style>
             <Style TargetType="Image" x:Key="Imagestyle">
@@ -34,10 +34,10 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
+                <!--<RowDefinition Height="0.10*"/>-->
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
 
             <!--<StackLayout Orientation="Horizontal"
@@ -56,11 +56,11 @@
                        Aspect="Fill"/>
             </StackLayout>-->
 
-            <custom1:CircleImage Grid.Row="1"
+            <custom1:CircleImage Grid.Row="0"
                    Grid.Column="0"
                    Margin="10"
-                   HeightRequest="110"
-                   WidthRequest="110"
+                   HeightRequest="120"
+                   WidthRequest="120"
                    Aspect="Fill"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
@@ -71,28 +71,28 @@
             </custom1:CircleImage>
 
             <StackLayout
-                   Grid.Row="2"
+                   Grid.Row="1"
                    Grid.Column="0"
                 Orientation="Horizontal"
                 HorizontalOptions="Center">
                 <Label 
                    Text="Welcome"
                    FontAttributes="Bold"
-                   FontSize="Medium"
+                   FontSize="Small"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
                 <Label 
                   x:Name="patientName"
                    FontAttributes="Bold"
-                   FontSize="Medium"
+                   FontSize="Small"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
             </StackLayout>
 
 
-            <Grid Grid.Row="3"
+            <Grid Grid.Row="2"
                    Grid.Column="0"
                   Margin="25,10">
 
@@ -167,15 +167,15 @@
                     <StackLayout
                         HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Image Source="HealthTip"
+                        <Image Source="dashboard"
                                HeightRequest="40"
                                WidthRequest="40"
                                  Style="{StaticResource Imagestyle}"/>
-                        <Label Text="Health Tips"
+                        <Label Text="Dashboard"
                               Style="{StaticResource LabelStyle}"/>
                     </StackLayout>
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="HealthTipsTapped"/>
+                        <TapGestureRecognizer Tapped="Dashboard_Tapped"/>
                     </Frame.GestureRecognizers>
                 </Frame>
 
@@ -195,6 +195,25 @@
                         <TapGestureRecognizer Tapped="UploadDocumentTapped"/>
                     </Frame.GestureRecognizers>
                 </Frame>
+
+                <Frame  Style="{StaticResource FrameStyle}"
+                       Grid.Row="3"
+                       Grid.Column="0">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="HealthTip"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                                 Style="{StaticResource Imagestyle}"/>
+                        <Label Text="Health Tips"
+                              Style="{StaticResource LabelStyle}"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HealthTipsTapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
             </Grid>
         </Grid>
     </ContentPage.Content>

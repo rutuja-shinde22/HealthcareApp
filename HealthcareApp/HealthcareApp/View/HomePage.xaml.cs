@@ -87,7 +87,10 @@ namespace HealthcareApp.View
         {
             Navigation.PushAsync(new ViewReportPage());
         }
-
+        private void Dashboard_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DashboardPage());
+        }
         private void HealthTipsTapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new HealthTipsPage());
@@ -238,6 +241,6 @@ namespace HealthcareApp.View
             Navigation.PushAsync(new ChangePasswordPage());
         }
 
-       
+      
     }
 }
