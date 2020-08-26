@@ -42,6 +42,7 @@ namespace HealthcareApp.View
                     Application.Current.Properties["BranchId"] = login.BranchId;
                     Application.Current.Properties["PatientName"] = login.PatientName;
                     Application.Current.Properties["Branch_EmailId"] = login.Branch_EmailId;
+                    Application.Current.Properties["OpdPatientId"] = login.OpdPatientId;
                 }
 
                 //Navigate to next page if username and password match 

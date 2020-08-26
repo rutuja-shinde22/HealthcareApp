@@ -27,6 +27,7 @@ namespace HealthcareApp
         Task<string> FillSpecialisation(int BranchId);
         Task<string> AppoinmentList1(string ClientId, string BranchId, string SpecialistId);
         Task<string> UploadDocument(string PatientID, string DocumentType, string DocumentName, string DocumentExtension, string UploadDocument, string BranchID);
-
+        Task<string> GetSpecializationWiseCount(string PatientID, string BranchId, string FromDate, string ToDate);
+        Task<string> GetVitalDetails(string PatientID, string FromDate, string ToDate);
     }
 }

@@ -161,6 +161,14 @@ namespace HealthcareApp.Droid.DBData {
         
         private System.Threading.SendOrPostCallback UploadDocumentOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SaveVitalDataOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAppointmentDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetVitalDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSpecializationWiseCountOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -396,6 +404,18 @@ namespace HealthcareApp.Droid.DBData {
         
         /// <remarks/>
         public event UploadDocumentCompletedEventHandler UploadDocumentCompleted;
+        
+        /// <remarks/>
+        public event SaveVitalDataCompletedEventHandler SaveVitalDataCompleted;
+        
+        /// <remarks/>
+        public event GetAppointmentDetailsCompletedEventHandler GetAppointmentDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetVitalDetailsCompletedEventHandler GetVitalDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetSpecializationWiseCountCompletedEventHandler GetSpecializationWiseCountCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -2537,6 +2557,152 @@ namespace HealthcareApp.Droid.DBData {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveVitalData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SaveVitalData(string OPDNo, string Weight, string height, string BPsystolic, string BPDistolic, string Pulse, string BMI, string BranchId) {
+            object[] results = this.Invoke("SaveVitalData", new object[] {
+                        OPDNo,
+                        Weight,
+                        height,
+                        BPsystolic,
+                        BPDistolic,
+                        Pulse,
+                        BMI,
+                        BranchId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SaveVitalDataAsync(string OPDNo, string Weight, string height, string BPsystolic, string BPDistolic, string Pulse, string BMI, string BranchId) {
+            this.SaveVitalDataAsync(OPDNo, Weight, height, BPsystolic, BPDistolic, Pulse, BMI, BranchId, null);
+        }
+        
+        /// <remarks/>
+        public void SaveVitalDataAsync(string OPDNo, string Weight, string height, string BPsystolic, string BPDistolic, string Pulse, string BMI, string BranchId, object userState) {
+            if ((this.SaveVitalDataOperationCompleted == null)) {
+                this.SaveVitalDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveVitalDataOperationCompleted);
+            }
+            this.InvokeAsync("SaveVitalData", new object[] {
+                        OPDNo,
+                        Weight,
+                        height,
+                        BPsystolic,
+                        BPDistolic,
+                        Pulse,
+                        BMI,
+                        BranchId}, this.SaveVitalDataOperationCompleted, userState);
+        }
+        
+        private void OnSaveVitalDataOperationCompleted(object arg) {
+            if ((this.SaveVitalDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveVitalDataCompleted(this, new SaveVitalDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAppointmentDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAppointmentDetails(string BranchId, string DoctorId, string FromDate, string ToDate) {
+            object[] results = this.Invoke("GetAppointmentDetails", new object[] {
+                        BranchId,
+                        DoctorId,
+                        FromDate,
+                        ToDate});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAppointmentDetailsAsync(string BranchId, string DoctorId, string FromDate, string ToDate) {
+            this.GetAppointmentDetailsAsync(BranchId, DoctorId, FromDate, ToDate, null);
+        }
+        
+        /// <remarks/>
+        public void GetAppointmentDetailsAsync(string BranchId, string DoctorId, string FromDate, string ToDate, object userState) {
+            if ((this.GetAppointmentDetailsOperationCompleted == null)) {
+                this.GetAppointmentDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAppointmentDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetAppointmentDetails", new object[] {
+                        BranchId,
+                        DoctorId,
+                        FromDate,
+                        ToDate}, this.GetAppointmentDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetAppointmentDetailsOperationCompleted(object arg) {
+            if ((this.GetAppointmentDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAppointmentDetailsCompleted(this, new GetAppointmentDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVitalDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetVitalDetails(string PatientID, string FromDate, string ToDate) {
+            object[] results = this.Invoke("GetVitalDetails", new object[] {
+                        PatientID,
+                        FromDate,
+                        ToDate});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetVitalDetailsAsync(string PatientID, string FromDate, string ToDate) {
+            this.GetVitalDetailsAsync(PatientID, FromDate, ToDate, null);
+        }
+        
+        /// <remarks/>
+        public void GetVitalDetailsAsync(string PatientID, string FromDate, string ToDate, object userState) {
+            if ((this.GetVitalDetailsOperationCompleted == null)) {
+                this.GetVitalDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetVitalDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetVitalDetails", new object[] {
+                        PatientID,
+                        FromDate,
+                        ToDate}, this.GetVitalDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetVitalDetailsOperationCompleted(object arg) {
+            if ((this.GetVitalDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetVitalDetailsCompleted(this, new GetVitalDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSpecializationWiseCount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetSpecializationWiseCount(string PatientID, string BranchId, string FromDate, string ToDate) {
+            object[] results = this.Invoke("GetSpecializationWiseCount", new object[] {
+                        PatientID,
+                        BranchId,
+                        FromDate,
+                        ToDate});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSpecializationWiseCountAsync(string PatientID, string BranchId, string FromDate, string ToDate) {
+            this.GetSpecializationWiseCountAsync(PatientID, BranchId, FromDate, ToDate, null);
+        }
+        
+        /// <remarks/>
+        public void GetSpecializationWiseCountAsync(string PatientID, string BranchId, string FromDate, string ToDate, object userState) {
+            if ((this.GetSpecializationWiseCountOperationCompleted == null)) {
+                this.GetSpecializationWiseCountOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSpecializationWiseCountOperationCompleted);
+            }
+            this.InvokeAsync("GetSpecializationWiseCount", new object[] {
+                        PatientID,
+                        BranchId,
+                        FromDate,
+                        ToDate}, this.GetSpecializationWiseCountOperationCompleted, userState);
+        }
+        
+        private void OnGetSpecializationWiseCountOperationCompleted(object arg) {
+            if ((this.GetSpecializationWiseCountCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSpecializationWiseCountCompleted(this, new GetSpecializationWiseCountCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -4396,6 +4562,110 @@ namespace HealthcareApp.Droid.DBData {
         private object[] results;
         
         internal UploadDocumentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void SaveVitalDataCompletedEventHandler(object sender, SaveVitalDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SaveVitalDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SaveVitalDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetAppointmentDetailsCompletedEventHandler(object sender, GetAppointmentDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAppointmentDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAppointmentDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetVitalDetailsCompletedEventHandler(object sender, GetVitalDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetVitalDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetVitalDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetSpecializationWiseCountCompletedEventHandler(object sender, GetSpecializationWiseCountCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSpecializationWiseCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSpecializationWiseCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

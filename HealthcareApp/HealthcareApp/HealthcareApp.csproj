@@ -124,10 +124,22 @@
     <None Update="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="View\ChangePasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\DashboardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="View\DoctorDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="View\ForgotPasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="View\HealthTipsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="View\LoginPage.xaml">
@@ -136,10 +148,28 @@
     <None Update="View\MasterDetailPageNav.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="View\MyAppointmentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="View\NavPages.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="View\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="View\ScheduleAppointmentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\SelectTimePopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\SignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\TabbedNavigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="View\UploadDocumentPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="View\ViewPrescriptionPage.xaml">

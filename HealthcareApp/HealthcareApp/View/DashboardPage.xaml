@@ -23,13 +23,14 @@
                 <DatePicker x:Name="startdatePicker"
                             TextColor="Black"
                              FontSize="Small"
-                            DateSelected="DatePicker_DateSelected"/>
+                            DateSelected="DatePicker_FromDateSelected"/>
                 <Label Text="End Date"
                        FontSize="11"
                        Margin="0,10,0,0"/>
                 <DatePicker x:Name="enddatePicker"
                             FontSize="Small"
-                            TextColor="Black"/>
+                            TextColor="Black"
+                            DateSelected="DatePicker_ToDateSelected"/>
             </StackLayout>
             <Label  Grid.Row="1"
                     Grid.Column="0"

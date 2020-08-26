@@ -263,5 +263,31 @@ namespace HealthcareApp.Droid
                 throw new NotImplementedException();
             }
         }
+
+        public async Task<string> GetSpecializationWiseCount(string PatientID, string BranchId, string FromDate, string ToDate)
+        {
+            try
+            {
+                var result = service.GetSpecializationWiseCount(PatientID, BranchId, FromDate, ToDate);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public async Task<string> GetVitalDetails(string PatientID, string FromDate, string ToDate)
+        {
+            try
+            {
+                var result = service.GetVitalDetails(PatientID, FromDate, ToDate);
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
