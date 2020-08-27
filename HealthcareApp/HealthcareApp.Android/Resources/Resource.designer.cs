@@ -2979,7 +2979,7 @@ namespace HealthcareApp.Droid
 			public const int ic_vol_type_tv_light = 2130837793;
 			
 			// aapt resource value: 0x7f020122
-			public const int logo = 2130837794;
+			public const int logo1 = 2130837794;
 			
 			// aapt resource value: 0x7f020123
 			public const int Logout = 2130837795;

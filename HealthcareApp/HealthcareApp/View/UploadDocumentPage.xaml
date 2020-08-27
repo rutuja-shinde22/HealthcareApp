@@ -22,6 +22,7 @@
                     TextColor="White"
                     BackgroundColor="#3498DB"
                     Clicked="UploadButton_ButtonClicked"/>
+            <Image x:Name="uploadedDoc"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

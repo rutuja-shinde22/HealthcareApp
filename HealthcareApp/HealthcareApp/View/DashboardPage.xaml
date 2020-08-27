@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HealthcareApp.View.DashboardPage"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              Title="Dashboard">
     <ContentPage.Content>
         <Grid Padding="10,0,10,10">
@@ -38,14 +39,30 @@
                     TextColor="Black"
                     FontAttributes="Bold"/>
             <Frame Grid.Row="2"
-                   Grid.Column="0"/>
+                   Grid.Column="0">
+                <ScrollView Orientation="Both"
+                                    VerticalScrollBarVisibility="Always"
+                                    HorizontalScrollBarVisibility="Always">
+                    <forms:ChartView x:Name="healthChart"  
+                               HeightRequest="180"/>
+                </ScrollView>
+               
+            </Frame>
             <Label  Grid.Row="3"
                    Grid.Column="0"
                 Text="Appointment History"
                     TextColor="Black"
                     FontAttributes="Bold"/>
             <Frame Grid.Row="4"
-                    Grid.Column="0"/>
+                    Grid.Column="0">
+                <ScrollView Orientation="Both"
+                                    VerticalScrollBarVisibility="Always"
+                                    HorizontalScrollBarVisibility="Always">
+                    <forms:ChartView x:Name="appoinmentHistoryChart"  
+                               HeightRequest="150"/>
+                </ScrollView>
+               
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

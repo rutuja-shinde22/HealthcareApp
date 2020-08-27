@@ -6,8 +6,8 @@ namespace HealthcareApp.Model
 {
     public class AppointmentHistoryGraph
     {
-        public string Label { get; set; }
+        public string specialization { get; set; }
         public string Count { get; set; }
-        public string CDate { get; set; }
+       
     }
 }
