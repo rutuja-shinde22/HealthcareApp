@@ -26,7 +26,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -90,11 +90,34 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomPickerRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PreviewControllerDS.cs" />
+    <Compile Include="RoundedCornerEntryRenderer.cs" />
+    <Compile Include="SaveIOS.cs" />
+    <Compile Include="ShowHidePassEffect.cs" />
+    <Compile Include="Web References\DBData\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Web References\DBData\hospitallist.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DBData\Patientlist.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DBData\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DBData\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -143,11 +166,28 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="IntelliAbb.Xamarin.Controls">
+      <Version>1.0.148</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>3.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -156,5 +196,128 @@
       <Project>{C07E2C50-6550-47BD-AF1F-117D4D202396}</Project>
       <Name>HealthcareApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://webapi.medismarthis.com/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DBData\</RelPath>
+      <UpdateFromURL>http://webapi.medismarthis.com/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\DBData\Service.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\a1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Address.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\AppIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Banner1.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Boxcheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BoxUncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Capture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dashboard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dimage.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DOB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DounArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HealthTip.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\healthTips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Mobile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\reports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\support.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VisibleOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VisibleOn.png" />
   </ItemGroup>
 </Project>
