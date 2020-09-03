@@ -73,7 +73,7 @@ namespace HealthcareApp.View
         {
            
             //Get Values from service
-            var details = await App.HealthSoapService.GetSpecializationWiseCount("OPD186", "1", "10-Aug-2020", "30-Aug-2020");
+            var details = await App.HealthSoapService.GetSpecializationWiseCount(_opdId,_branchId,FromDate , ToDate);
             if ((details != null) && (details.Length > 0))
             {
                 //Deserialize object and save in res

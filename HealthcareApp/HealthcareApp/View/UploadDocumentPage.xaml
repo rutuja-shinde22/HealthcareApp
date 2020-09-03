@@ -17,12 +17,13 @@
                    x:Name="documentName"/>
             <Button Text="Select Document" 
                     Clicked="SelectDocument_ButtonClicked"/>
+            <Label x:Name="uploadedDoc"
+                   IsVisible="True"/>
             <Button Text="Upload Document"
                     CornerRadius="20"
                     TextColor="White"
                     BackgroundColor="#3498DB"
                     Clicked="UploadButton_ButtonClicked"/>
-            <Image x:Name="uploadedDoc"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

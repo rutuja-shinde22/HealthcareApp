@@ -1,5 +1,7 @@
 ﻿using HealthcareApp.Model;
 using Newtonsoft.Json;
+using Plugin.FilePicker;
+using Plugin.FilePicker.Abstractions;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -14,9 +16,12 @@ using Xamarin.Forms.Xaml;
 
 namespace HealthcareApp.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class UploadDocumentPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class UploadDocumentPage : ContentPage
+    {
+        byte[] Documentbyte;
+        string filename;
+        string[] Filetype;
         public string documentType;
         public string SelectedDoc;
         public string _clientId;
@@ -24,9 +29,9 @@ namespace HealthcareApp.View
         public ImageSource SelectedImage { get; private set; }
 
 
-        public UploadDocumentPage ()
-		{
-			InitializeComponent ();
+        public UploadDocumentPage()
+        {
+            InitializeComponent();
             picker.ItemsSource = paymentModeList;
 
             if (Application.Current.Properties.ContainsKey("ClientId"))
@@ -60,50 +65,89 @@ namespace HealthcareApp.View
         {
             await CrossMedia.Current.Initialize();
 
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Not Supported", "Your device does not support this functionality", "Ok");
-                return;
-            }
+            //if (!CrossMedia.Current.)
+            //{
+            //    await DisplayAlert("Not Supported", "Your device does not support this functionality", "Ok");
+            //    return;
+            //}
             //added using Plugin.Media.Abstractions
             //if you want to take a picture use StoreCameraMediaOption insted of pickmediaoption
 
-            var mediaOptions = new PickMediaOptions();
-            {
-                PhotoSize = PhotoSize.Small;
-            }
-            //if you want to take a picture use TakePhotoAsync insted of PickPhototoAsync
+            //var mediaOptions = new PickMediaOptions();
+            //{
+            //    PhotoSize = PhotoSize.Small;
+            //}
+            ////if you want to take a picture use TakePhotoAsync insted of PickPhototoAsync
 
-            var selectdImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
+            //var selectdImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
 
-            if (selectdImageFile == null)
+            //if (selectdImageFile == null)
+            //{
+            //    await DisplayAlert("Error", "could not get the image,Please try again", "Ok");
+            //    return;
+            //}
+            //else
+            //{
+            //    await DisplayAlert("", "Image selected successfully", "Ok");
+            //}
+            //uploadedDoc.IsVisible = true;
+            //uploadedDoc.Source= ImageSource.FromStream(() => selectdImageFile.GetStream());
+            //SelectedImage = ImageSource.FromStream(() => selectdImageFile.GetStream());
+            //string path = selectdImageFile.Path.ToString();
+
+            //  Convert Selected ImageSource to Byte[]
+
+            //StreamImageSource streamImageSource = (StreamImageSource)SelectedImage;
+            //System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
+            //Task<Stream> task = streamImageSource.Stream(cancellationToken);
+            //Stream stream = task.Result;
+
+
+            //byte[] b;
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    stream.CopyTo(ms);
+            //    b = ms.ToArray();
+            //}
+            ////Convert Byte[] to base64 string
+            //SelectedDoc = Convert.ToBase64String(b);
+
+            FileData filedata = await CrossFilePicker.Current.PickFile();
+            Documentbyte = filedata.DataArray;
+            if (string.IsNullOrEmpty(filedata.FileName) == false)
             {
-                await DisplayAlert("Error", "could not get the image,Please try again", "Ok");
-                return;
+
+
+                string FileExtension = Path.GetExtension(filedata.FileName);
+                string FileNamewithoutextetion = Path.GetFileNameWithoutExtension(filedata.FileName);
+
+
+                uploadedDoc.Text = FileNamewithoutextetion;
+                Filetype = FileExtension.ToString().Split('.');
+
             }
             else
             {
-                await DisplayAlert("", "Image selected successfully", "Ok");
+
+                if (filedata.FilePath.Split('\\').Length > 0)
+                {
+
+                    string Filenamefropath = filedata.FilePath.Split('/')[filedata.FilePath.Split('/').Length - 1];
+
+
+
+                    string FileExtension = Path.GetExtension(Filenamefropath);
+                    string FileNamewithoutextetion = Path.GetFileNameWithoutExtension(Filenamefropath);
+
+
+                    uploadedDoc.Text = FileNamewithoutextetion;
+                    Filetype = FileExtension.ToString().Split('.');
+
+
+                }
+                
             }
-            SelectedImage = ImageSource.FromStream(() => selectdImageFile.GetStream());
-            string path = selectdImageFile.Path.ToString();
-
-          //  Convert Selected ImageSource to Byte[]
-
-            StreamImageSource streamImageSource = (StreamImageSource)SelectedImage;
-            System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-            Task<Stream> task = streamImageSource.Stream(cancellationToken);
-            Stream stream = task.Result;
-
-
-            byte[] b;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                stream.CopyTo(ms);
-                b = ms.ToArray();
-            }
-            //Convert Byte[] to base64 string
-            SelectedDoc = Convert.ToBase64String(b);
+            SelectedDoc = Convert.ToBase64String(Documentbyte);
         }
 
         private async void UploadButton_ButtonClicked(object sender, EventArgs e)
@@ -111,7 +155,7 @@ namespace HealthcareApp.View
             try
             {
                 string docName = documentName.Text;
-                if((string.IsNullOrEmpty(_clientId))|| (string.IsNullOrEmpty(documentType))|| (string.IsNullOrEmpty(docName)) || (string.IsNullOrEmpty(SelectedDoc))||(string.IsNullOrEmpty(_branchId)))
+                if ((string.IsNullOrEmpty(_clientId)) || (string.IsNullOrEmpty(documentType)) || (string.IsNullOrEmpty(docName)) || (string.IsNullOrEmpty(SelectedDoc)) || (string.IsNullOrEmpty(_branchId)))
                 {
                     await DisplayAlert("", "Please Enter all values", "Ok");
                     return;
@@ -123,9 +167,10 @@ namespace HealthcareApp.View
                     await DisplayAlert("", "Document not Uploaded!", "Ok");
                     return;
                 }
-                else 
+                else
                 {
                     await DisplayAlert("", "Document Uploaded successfully", "Ok");
+                    uploadedDoc.IsVisible = false;
                     return;
                 }
                 //else
@@ -133,10 +178,11 @@ namespace HealthcareApp.View
                 //    await DisplayAlert("", "Something went wrong", "Ok");
                 //    return;
                 //}
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 var msg = ex.Message;
             }
         }
     }
-    }
+}
