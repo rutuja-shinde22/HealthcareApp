@@ -18,7 +18,8 @@
             <Button Text="Select Document" 
                     Clicked="SelectDocument_ButtonClicked"/>
             <Label x:Name="uploadedDoc"
-                   IsVisible="True"/>
+                   IsVisible="True"
+                   TextColor="Black"/>
             <Button Text="Upload Document"
                     CornerRadius="20"
                     TextColor="White"

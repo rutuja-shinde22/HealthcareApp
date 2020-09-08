@@ -271,10 +271,10 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\dashboard.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logo1.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\logo1.png" />
   </ItemGroup>

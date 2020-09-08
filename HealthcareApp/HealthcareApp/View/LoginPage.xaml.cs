@@ -22,47 +22,51 @@ namespace HealthcareApp.View
         }
         private async void Login_Button_Pressed(object sender, EventArgs e)
         {
-
-            //get username & password from entry
-             _username = Username.Text;
-             _password = Password.Text;
-
-            //  Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Please Wait...");
-
-            //Get details from service 
-            var details = await App.HealthSoapService.Login1(_username, _password);
-            if ((details != null) && (details.Length > 289))
+            try
             {
-                //Deserialize object and save in res
-                var res = JsonConvert.DeserializeObject<List<Login>>(details);
-                foreach (Login login in res)
+                //get username & password from entry
+                _username = Username.Text;
+                _password = Password.Text;
+
+                //  Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Please Wait...");
+
+                //Get details from service 
+                var details = await App.HealthSoapService.Login1(_username, _password);
+                if ((details != null) && (details.Length > 289))
                 {
-                    Application.Current.Properties["Username"] = login.Username;
-                    Application.Current.Properties["ClientId"] = login.ClientId;
-                    Application.Current.Properties["BranchId"] = login.BranchId;
-                    Application.Current.Properties["PatientName"] = login.PatientName;
-                    Application.Current.Properties["Branch_EmailId"] = login.Branch_EmailId;
-                    Application.Current.Properties["OpdPatientId"] = login.OpdPatientId;
+                    //Deserialize object and save in res
+                    var res = JsonConvert.DeserializeObject<List<Login>>(details);
+                    foreach (Login login in res)
+                    {
+                        Application.Current.Properties["Username"] = login.Username;
+                        Application.Current.Properties["ClientId"] = login.ClientId;
+                        Application.Current.Properties["BranchId"] = login.BranchId;
+                        Application.Current.Properties["PatientName"] = login.PatientName;
+                        Application.Current.Properties["Branch_EmailId"] = login.Branch_EmailId;
+                        Application.Current.Properties["OpdPatientId"] = login.OpdPatientId;
+                    }
+
+                    //Navigate to next page if username and password match 
+                    await Navigation.PushAsync(new HomePage());
+
+
+
                 }
-
-                //Navigate to next page if username and password match 
-                await Navigation.PushAsync(new HomePage());
-
-               
-
-            }
-            else
+                else
+                {
+                    await DisplayAlert("Login Failed", "Invalid username or password", "Ok");
+                    Username.Text = string.Empty;
+                    Password.Text = string.Empty;
+                }
+            } catch (Exception ex)
             {
-                await DisplayAlert("Login Failed", "Invalid username or password", "Ok");
-                Username.Text = string.Empty;
-                Password.Text = string.Empty;
+                var msg = ex.Message;
             }
         }
-
-        private void SignUpTapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new SignUpPage());
-        }
+        //private void SignUpTapped(object sender, EventArgs e)
+        //{
+        //    Navigation.PushAsync(new SignUpPage());
+        //}
 
         private void ForgotPasswordTapped(object sender, EventArgs e)
         {
