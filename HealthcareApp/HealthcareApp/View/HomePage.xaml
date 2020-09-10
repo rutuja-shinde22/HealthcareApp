@@ -65,9 +65,9 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    x:Name="userImage">
-                <!--<Image.GestureRecognizers>
+                <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SelectPictureFromGallery"/>
-                </Image.GestureRecognizers>-->
+                </Image.GestureRecognizers>
             </custom1:CircleImage>
 
             <StackLayout

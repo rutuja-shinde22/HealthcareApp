@@ -2,6 +2,8 @@
 //using Android.Util;
 using HealthcareApp.Model;
 using Newtonsoft.Json;
+using Plugin.FilePicker;
+using Plugin.FilePicker.Abstractions;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
@@ -30,8 +32,14 @@ namespace HealthcareApp.View
         public PhotoSize PhotoSize { get; private set; }
         public string profileImage { get; private set; }
         public ImageSource SelectedImage { get; private set; }
+        public string SelectedDoc;
 
+        public byte[] Documentbyte;
+        public string filenamewithextension;
 
+        public string[] Filetype;
+
+        public string fileEx;
 
         public HomePage()
         {
@@ -241,6 +249,94 @@ namespace HealthcareApp.View
             Navigation.PushAsync(new ChangePasswordPage());
         }
 
-      
+        private async void SelectPictureFromGallery(object sender, EventArgs e)
+        {
+            try
+            {
+                // check & ask permission
+
+                int commandParameter = 11;
+                Permission permission = (Permission)commandParameter;
+                var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (permissionStatus != PermissionStatus.Granted)
+                {
+                    var response = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+
+                }
+                if (permissionStatus != PermissionStatus.Granted)
+                {
+                    return;
+
+                }
+
+                //Open Gallery & sect doc,convert into base64
+                await CrossMedia.Current.Initialize();
+
+                FileData filedata = await CrossFilePicker.Current.PickFile();
+                Documentbyte = filedata.DataArray;
+                if (string.IsNullOrEmpty(filedata.FileName) == false)
+                {
+                    string FileExtension = Path.GetExtension(filedata.FileName);
+                    string FileNamewithoutextetion = Path.GetFileNameWithoutExtension(filedata.FileName);
+                    filenamewithextension = Path.GetFileName(filedata.FileName);
+
+                   // uploadedDoc.Text = filenamewithextension;
+                    Filetype = FileExtension.ToString().Split('.');
+                    fileEx = Filetype[1];
+
+                }
+                else
+                {
+
+                    if (filedata.FilePath.Split('\\').Length > 0)
+                    {
+
+                        string Filenamefropath = filedata.FilePath.Split('/')[filedata.FilePath.Split('/').Length - 1];
+
+
+
+                        string FileExtension = Path.GetExtension(Filenamefropath);
+                        string FileNamewithoutextetion = Path.GetFileNameWithoutExtension(Filenamefropath);
+
+
+                        //uploadedDoc.Text = FileNamewithoutextetion;
+                        Filetype = FileExtension.ToString().Split('.');
+                    }
+
+                }
+               SelectedDoc = Convert.ToBase64String(Documentbyte);
+                int branchId = Convert.ToInt32(_branchId);
+
+                //Update Iamge in database
+                var details = await App.HealthSoapService.UpdatePhoto(_clientId, branchId, SelectedDoc);
+                if ((details != null) && (details.Length > 0))
+                {
+                    //Deserialize object and save in res
+                    var msg = "";
+                    var res = JsonConvert.DeserializeObject<List<ChangePasswordModel>>(details);
+                    foreach (ChangePasswordModel changePasswordModel in res)
+                    {
+                        msg = changePasswordModel.Message;
+                    }
+                    if (msg == "Update")
+                    {
+                        DisplayUserImage();
+                        DisplayAlert("Profile Picture Updated", "Your Profile Picture Updated Successfully", "Ok");
+
+                    }
+                    else
+                    {
+                        DisplayAlert("Something went wrong!", "Please try again", "Ok");
+                    }
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
     }
 }
