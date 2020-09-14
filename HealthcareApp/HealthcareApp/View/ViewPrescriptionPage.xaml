@@ -65,7 +65,7 @@
 
                                     <StackLayout Orientation="Horizontal"
                                                  HorizontalOptions="Center">
-                                        <Button Text="View Prescription"
+                                            <Button Text="View Prescription"
                                             BackgroundColor="#2E86C1"
                                             TextColor="White"
                                             FontSize="11" 
@@ -74,8 +74,17 @@
                                             WidthRequest="150"
                                             CornerRadius="10"
                                             Clicked="DownloadPrescriptionClicked"
-                                                CommandParameter="{Binding .}"/>
-                                        <!--<Button Text="View Reports"
+                                                CommandParameter="{Binding .}">
+                                                <Button.Triggers>
+                                                    <DataTrigger TargetType="Button"  Binding="{Binding v}" Value="False">
+                                                        <Setter Property="IsVisible" Value="False"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Button"  Binding="{Binding v}" Value="True">
+                                                        <Setter Property="IsVisible" Value="True"/>
+                                                    </DataTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                            <!--<Button Text="View Reports"
                                             BackgroundColor="Blue"
                                             TextColor="White"
                                             FontSize="8" 

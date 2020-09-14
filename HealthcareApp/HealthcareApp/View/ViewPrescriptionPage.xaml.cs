@@ -27,6 +27,7 @@ namespace HealthcareApp.View
         public string _clientId;
         public string _branchId;
         string base64Image1;
+        public string appointmentStatus;
 
         public ViewPrescriptionPage()
         {
@@ -56,6 +57,21 @@ namespace HealthcareApp.View
                 if (details.Length > 0)
                 {
                     res = JsonConvert.DeserializeObject<List<SendResult>>(details);
+                    foreach(var item in res)
+                    {
+                        appointmentStatus = item.Appointmentstatus;
+                        if (appointmentStatus == "Complete")
+                        {
+                            item.v = "True";
+                            // item.bgcolor = "True";
+
+                        }
+                        else
+                        {
+                            item.v = "False";
+                            // item.bgcolor = "False";
+                        }
+                    }
                     listView.ItemsSource = res;
 
                 }
@@ -127,7 +143,8 @@ namespace HealthcareApp.View
             public int BranchId { get; set; }
             public int AppointmentId { get; set; }
             public string DocImage { get; set; }
-
+            public string Appointmentstatus { get; set; }
+            public string v { get; set; }
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
